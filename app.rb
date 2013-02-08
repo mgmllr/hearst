@@ -3,7 +3,12 @@ require 'bundler'
 
 Bundler.require
 
+
+require "sinatra/json"
+
 class ExcellentRussianApp < Sinatra::Application
+  helpers Sinatra::JSON
+
   configure :development do
   end
 
@@ -23,6 +28,13 @@ class ExcellentRussianApp < Sinatra::Application
 
   get '/' do
     haml :index
+  end
+
+  get '/feed.json' do
+    feed_output = {
+      your_json: 'here'
+    }
+    json feed_output
   end
 
   get '/stylesheet.css' do
