@@ -65,7 +65,7 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/logout" do
     session.clear
-    redirect "/"
+    redirect "/singly"
   end
 
   def profiles_url
