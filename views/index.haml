@@ -1,2 +1,17 @@
-%img{ :src => 'img/pizza.gif' }
-%h1 Hello warld.
+%h1 Singly OAuth Example
+- if @profiles
+  %h2= "Nice to see you again!"
+- else
+  %h2= "Please connect a service"
+
+- if session[:access_token]
+  %p= "Your access token is #{session[:access_token]}"
+  %a{:href=>"/logout"}Log out
+%ul
+- %w[twitter instagram].each do |service|
+  %li="#{service.capitalize}"
+  -if @profiles && @profiles[service]
+    - @photos.each do |pic|
+      %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
+  -else
+    %a{:href=>"/auth/singly?service=#{service}"} Connect
