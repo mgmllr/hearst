@@ -1,18 +1,2 @@
-%h1 Singly OAuth Example
-- if @profiles
-  %h3.text-success= "Nice to see you again!"
-- else
-  %h3.text-warning= "Please connect a service"
-
-- if session[:access_token]
-  %p= "Your access token is"
-  %input{:type=> "text", :value=>"#{session[:access_token]}", :readonly=>"readonly"}
-  %a.btn.btn-warning{:href=>"/logout"}Log out
-%ul
-- %w[twitter instagram].each do |service|
-  %li="#{service.capitalize}"
-  -if @profiles && @profiles[service]
-    - @photos.each do |pic|
-      %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
-  -else
-    %a.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect
+%h1 landing page
+%a.btn.btn-primary{:href=>"/singly"} singly API example
