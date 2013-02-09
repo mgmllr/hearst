@@ -87,7 +87,11 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/instagram" do
     if session[:access_token]
+      params = {:query=> {:access_token=> session[:access_token]}}.inspect
+      puts params.inspect
+      puts instagram_url("HearstFashionHack")
       @grams = HTTParty.get(instagram_url("HearstFashionHack"), {:query=> {:access_token=> session[:access_token]}})
+      puts @grams.inspect
     else
       redirect "/singly"
     end
@@ -126,7 +130,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   def instagram_url(tag)
-    "#{INSTAGRAM_API_BASE}/tags/#{tag}/media/recent"
+    "#{SINGLY_API_BASE}/proxy/instagram/tags/#{tag}/media/recent"
   end
 end
 

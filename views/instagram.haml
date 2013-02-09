@@ -1,2 +1,5 @@
 %h1 Instagram example
-%p= @grams
+- @grams["data"].each do |gram|
+  .gram.span3
+    %a{:href=> "#{gram["link"]}"}
+      %img.img-polaroid{:src=> "#{gram["images"]["low_resolution"]["url"]}"}
