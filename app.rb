@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 
 SINGLY_API_BASE = "https://api.singly.com"
+REDIS = nil
 
 Bundler.require
 
@@ -22,7 +23,7 @@ class ExcellentRussianApp < Sinatra::Application
     set :root, File.dirname(__FILE__)
 
     uri = URI.parse(ENV["REDISCLOUD_URL"])
-    REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+    REDIS ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
     Compass.configuration do |config|
       config.project_path = File.dirname(__FILE__)
