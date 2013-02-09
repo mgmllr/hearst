@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'unicorn'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'rake'
@@ -7,6 +8,7 @@ gem 'yajl-ruby'
 
 gem 'redis'
 gem 'redis-objects'
+gem 'resque'
 
 gem 'haml'
 gem 'sass'
