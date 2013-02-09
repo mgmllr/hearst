@@ -38,15 +38,19 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get '/' do
-    if session[:access_token]
-    @profiles = HTTParty.get(profiles_url, {
-      :query => {:access_token => session[:access_token]}
-      }).parsed_response
-    @photos = HTTParty.get(photos_url, {
-      :query => {:access_token => session[:access_token]}
-      }).parsed_response
-    end
     haml :index
+  end
+
+  get "/singly" do
+    if session[:access_token]
+      @profiles = HTTParty.get(profiles_url, {
+        :query => {:access_token => session[:access_token]}
+        }).parsed_response
+      @photos = HTTParty.get(photos_url, {
+        :query => {:access_token => session[:access_token]}
+        }).parsed_response
+    end
+    haml :singly
   end
 
   get '/stylesheet.css' do
@@ -56,7 +60,7 @@ class ExcellentRussianApp < Sinatra::Application
   get "/auth/singly/callback" do
     auth = request.env["omniauth.auth"]
     session[:access_token] = auth.credentials.token
-    redirect "/"
+    redirect "/singly"
   end
 
   get "/logout" do
