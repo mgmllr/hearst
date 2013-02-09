@@ -65,7 +65,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get "/hearst" do
-    @articles = HTTParty.get("http://hearst.api.mashery.com/Article/search", {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}).parsed_response
+    @articles = HTTParty.get(articles_url, {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}).parsed_response
     haml :hearst
   end
 
@@ -93,7 +93,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   def articles_url
-    "#{HEARST_API_BASE}/Article"
+    "#{HEARST_API_BASE}/Article/search"
   end
 end
 
