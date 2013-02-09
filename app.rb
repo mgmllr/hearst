@@ -3,6 +3,7 @@ require 'bundler'
 
 SINGLY_API_BASE = "https://api.singly.com"
 HEARST_API_BASE = "http://hearst.api.mashery.com"
+TWITTER_API_BASE = "http://search.twitter.com/"
 
 Bundler.require
 
@@ -69,6 +70,11 @@ class ExcellentRussianApp < Sinatra::Application
     haml :hearst
   end
 
+  get "/twitter" do
+    @tweets = HTTParty.get(twitter_url, {:query=> {:include_entities=> true, :q=>"\#HearstFashionHack"}})
+    haml :twitter
+  end
+
   get '/stylesheet.css' do
     scss :styles
   end
@@ -94,6 +100,10 @@ class ExcellentRussianApp < Sinatra::Application
 
   def articles_url
     "#{HEARST_API_BASE}/Article/search"
+  end
+
+   def twitter_url
+    "#{TWITTER_API_BASE}/search.json"
   end
 end
 
