@@ -3,7 +3,8 @@ require 'bundler'
 
 SINGLY_API_BASE = "https://api.singly.com"
 HEARST_API_BASE = "http://hearst.api.mashery.com"
-TWITTER_API_BASE = "http://search.twitter.com/"
+TWITTER_API_BASE = "http://search.twitter.com"
+INSTAGRAM_API_BASE = "https://api.instagram.com/v1"
 
 Bundler.require
 
@@ -75,6 +76,15 @@ class ExcellentRussianApp < Sinatra::Application
     haml :twitter
   end
 
+  get "/instagram" do
+    if session[:access_token]
+      @grams = HTTParty.get(instagram_url("HearstFashionHack"), {:query=> {:access_token=> session[:access_token]}})
+    else
+      redirect "/singly"
+    end
+    haml :instagram
+  end
+
   get '/stylesheet.css' do
     scss :styles
   end
@@ -102,8 +112,12 @@ class ExcellentRussianApp < Sinatra::Application
     "#{HEARST_API_BASE}/Article/search"
   end
 
-   def twitter_url
+  def twitter_url
     "#{TWITTER_API_BASE}/search.json"
+  end
+
+  def instagram_url(tag)
+    "#{INSTAGRAM_API_BASE}/tags/#{tag}/media/recent"
   end
 end
 
