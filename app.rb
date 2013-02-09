@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 
 SINGLY_API_BASE = "https://api.singly.com"
+HEARST_API_BASE = "http://hearst.api.mashery.com"
 
 Bundler.require
 
@@ -63,6 +64,11 @@ class ExcellentRussianApp < Sinatra::Application
     haml :singly
   end
 
+  get "/hearst" do
+    @articles = HTTParty.get("http://hearst.api.mashery.com/Article/search", {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}).parsed_response
+    haml :hearst
+  end
+
   get '/stylesheet.css' do
     scss :styles
   end
@@ -84,6 +90,10 @@ class ExcellentRussianApp < Sinatra::Application
 
   def photos_url
     "#{SINGLY_API_BASE}/types/photos"
+  end
+
+  def articles_url
+    "#{HEARST_API_BASE}/Article"
   end
 end
 
