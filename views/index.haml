@@ -1,8 +1,8 @@
 %h1 Singly OAuth Example
 - if @profiles
-  %h2= "Nice to see you again!"
+  %h3.text-success= "Nice to see you again!"
 - else
-  %h2= "Please connect a service"
+  %h3.text-warning= "Please connect a service"
 
 - if session[:access_token]
   %p= "Your access token is #{session[:access_token]}"
@@ -14,4 +14,4 @@
     - @photos.each do |pic|
       %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
   -else
-    %a{:href=>"/auth/singly?service=#{service}"} Connect
+    %a.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect
