@@ -7,6 +7,10 @@ Bundler.require
 
 require "sinatra/json"
 
+Dir.glob('./lib/*.rb') do |model|
+  require model
+end
+
 class ExcellentRussianApp < Sinatra::Application
   helpers Sinatra::JSON
 
