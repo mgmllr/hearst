@@ -2,10 +2,25 @@
 %html
   %head
     %title Excellent Russian App
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %script{:type => "text/javascript", :src  => "js/bootstrap.js"}
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'css/bootstrap.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'css/bootstrap-responsive.css' }
     %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/stylesheet.css' }
   %body
     / Header and Nav
-    %header
-    %div
-      =yield
-    %footer
+    .container
+      %header
+        .navbar
+          .navbar-inner
+            %a.brand logo
+            %ul.nav
+              %li.active
+                %a{:href=> "/"} home
+              %li
+                %a{:href=> "/singly"} singly example
+              %li
+                %a sign-in
+      .hero
+        =yield
+      %footer
