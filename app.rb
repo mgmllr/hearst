@@ -49,6 +49,7 @@ class ExcellentRussianApp < Sinatra::Application
       your_json: 'here'
     }
     json feed_output
+  end
 
   get "/singly" do
     if session[:access_token]
