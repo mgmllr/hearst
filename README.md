@@ -1,9 +1,14 @@
+# To create an .env file
+```
+$ cp env-example .env
+```
+
 # To start redis and run it in the background
 
 ```
 $ redis-server
 ^Z
-bg
+$ bg
 ```
 
 
