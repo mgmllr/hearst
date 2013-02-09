@@ -1,8 +1,17 @@
-# To start
+# To start redis and run it in the background
 
 ```
-bundle install
-bundle exec shotgun
+$ redis-server
+^Z
+bg
+```
+
+
+# To start webapp
+
+```
+$ bundle install
+$ foreman start
 ```
 
 # Then visit...
