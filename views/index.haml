@@ -5,8 +5,9 @@
   %h3.text-warning= "Please connect a service"
 
 - if session[:access_token]
-  %p= "Your access token is #{session[:access_token]}"
-  %a{:href=>"/logout"}Log out
+  %p= "Your access token is"
+  %input{:type=> "text", :value=>"#{session[:access_token]}", :readonly=>"readonly"}
+  %a.btn.btn-warning{:href=>"/logout"}Log out
 %ul
 - %w[twitter instagram].each do |service|
   %li="#{service.capitalize}"
