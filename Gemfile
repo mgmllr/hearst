@@ -10,7 +10,9 @@ gem 'redis-objects'
 
 gem 'haml'
 gem 'sass'
+gem 'httparty'
 gem 'compass'
+gem "omniauth-singly"
 
 group :development do
   gem 'shotgun'
