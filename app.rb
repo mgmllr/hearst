@@ -11,10 +11,14 @@ class ExcellentRussianApp < Sinatra::Application
   helpers Sinatra::JSON
 
   configure :development do
+    ENV["REDISCLOUD_URL"] = 'http://localhost:6379'
   end
 
   configure do
     set :root, File.dirname(__FILE__)
+
+    uri = URI.parse(ENV["REDISCLOUD_URL"])
+    REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
     Compass.configuration do |config|
       config.project_path = File.dirname(__FILE__)
