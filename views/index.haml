@@ -11,7 +11,7 @@
   %ol
     - User.all.each do |user|
       %li
-        %img{:src => user[:image] }
+        %h2 #{user[:name]}
         %h2 Score: #{User.get_user_score(user[:id])}
 .editorial.span12
   %h3 #Hearst Editorial
