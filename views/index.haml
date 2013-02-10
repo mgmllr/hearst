@@ -19,8 +19,9 @@
       - name = article["author_first_name"] + " " + article["author_last_name"]
       - if Hearst::EDITORS[name]
         %li
-        %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
-          %span.editor= Hearst::EDITORS[name]
-      %a{:href=> "#{article["canonical_url"]}"}
-        %span.title= article["title"]
-      %span.tease= article["promo_teaser"]
+          %a{:href=> "#{article["canonical_url"]}"}
+            %span.title= article["title"]
+          %span.tease= article["promo_teaser"]
+          via
+          %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
+            %span.editor= Hearst::EDITORS[name]

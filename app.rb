@@ -120,12 +120,12 @@ class ExcellentRussianApp < Sinatra::Application
     auth = request.env["omniauth.auth"]
     puts auth.inspect
     session[:access_token] = auth.credentials.token
-    redirect "/singly"
+    redirect "/"
   end
 
   get "/logout" do
     session.clear
-    redirect "/singly"
+    redirect "/"
   end
 
   def profiles_url

@@ -19,8 +19,8 @@
               %li.active
                 %a{:href=> "/"} Home
             .auth
-              - if current_user
-                %a.auth.pull-right{:href=> "/singly"} Sign-out
+              - if current_user[:image]
+                %a.auth.pull-right{:href=> "/logout"} Sign-out
                 %img.nav_prof.pull-right{ :src => current_user[:image] }  
               - else  
                 %a.auth.pull-right{:href=> "/singly"} Sign-in
