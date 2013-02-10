@@ -34,6 +34,7 @@
     - count = 0
     - User.all.each do |user|
       - count = count + 1
+      - post =  user[:posts][0]
       .user_card.row-fluid
         .pic_score.span4
           %img.profile_pic{:src => user[:image] }
@@ -41,3 +42,10 @@
         .name_info.span8
           %span.user_rank= count
           %span.user_name= "@" + "#{user[:name]}"
+          - if post
+            .user_post="#{post[:content]}"
+            .post_details.row-fluid
+              .post_time.span8="#{post[:timestamp]}"
+              .post_score.span4="Score: #{post[:score]}"
+          - else
+            .user_post.alert No Data Available

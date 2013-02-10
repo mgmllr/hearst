@@ -96,6 +96,27 @@ div.leaderboard {
         font-weight: $heavy_weight;
       }
     }
+    div{
+      &.user_post {
+        margin-top: $large_space;
+        padding: $large_space;
+        font-size: 15px;
+      }
+      &.post_details {
+        font-size: 15px;
+        color: $blue;
+        div{
+          padding: $large_space;
+          &.post_score {
+            background-color: $salmon;
+            color: white;
+            font-weight: $heavy_weight;
+            font-size: 15px;
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 }
 
