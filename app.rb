@@ -102,7 +102,7 @@ class ExcellentRussianApp < Sinatra::Application
     haml :instagram
   end
 
-  get '/stylesheet.css' do
+  get "/stylesheet.css" do
     scss :styles
   end
 

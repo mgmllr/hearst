@@ -1,0 +1,40 @@
+$purple: #47006B;
+$yellow: #FFFF4C;
+$blue: #00CCCB;
+$pink:  #FF0079;
+$salmon: #FF5B51;
+$small_pad: 5px;
+$large_pad: 10px;
+
+@font-family {
+  font-family: "Blanch";
+  src: url(fonts/BLANCH_CONDENSED_LIGHT.otf);
+}
+
+h1 {
+  font-family: "Blanch";
+  font-size: 100px;
+  text-align: center;
+}
+
+div.trending_editorial {
+  background-color: $yellow;
+  padding: $small_pad;
+  h3 {
+    color: $salmon;
+    font-family: "Blanch";
+    font-size: 50px;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+div.leaderboard {
+  background-color: white;
+  h3{
+    color: $blue;
+    font-family: "Blanch";
+    font-size: 50px;
+  }
+}

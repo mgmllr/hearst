@@ -1,9 +1,10 @@
-%h1 landing page
-%a.btn.btn-primary{:href=>"/singly"} singly API example
-.trending_editorial
-  %h2 Trending Editorial
+%h1 - win fashion week -
+.trending_editorial.span5
+  %h3 #Trending Editorial
   %ol  
   - @trends.each do |k, v|
     %li
-      %h4= k
-      %h3= v 
+      =k
+      =v
+.leaderboard.span6
+  %h3 Leaderboard
