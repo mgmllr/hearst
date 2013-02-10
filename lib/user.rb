@@ -47,7 +47,7 @@ class User < Model
     end
 
     users.map! do |user|
-      user[:score] = User.get_user_score(user[:name]).to_i
+      user[:score] = User.get_user_score(user[:name]).round
       user
     end
 
