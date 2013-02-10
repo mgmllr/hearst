@@ -9,7 +9,21 @@ class TrendProcessor
     @json_hash = parser.parse(json)
   end
 
-  def process
-    
+  def process_twitter
+    @trend_hash = Redis::Set.new('trends')
+
+    tweets = @json_hash["results"]
+    tweets.each do |tweet|
+      tweet["entities"]["hashtags"].each do |hastag|
+        @trends_hash.incr(hastag["text"], 1)
+      end
+    end
+  end
+
+  def process_instagram
+    grams = @json_hash["data"]["tags"]
+    grams.each do |tag|
+      @trends_hash.incr(tag, 1)
+    end 
   end
 end
