@@ -1,19 +1,19 @@
 require 'redis/hash_key'
 
-class Post
+class Post < Model
+
   def self.add_post(user_id, post_data)
-    post = Redis::HashKey.new("users:#{user_id}:post:#{post_data[:id]}")
+    post = Redis::HashKey.new("users:#{user_id}:post:#{post_data[:id]}", redis)
     post.bulk_set(post_data)
   end
 
   def self.all
     posts = []
 
-    redis = Redis.new
     keys = redis.keys "users:*:post:*"
 
     keys.each do |key|
-      post = Redis::HashKey.new(key)
+      post = Redis::HashKey.new(key, redis)
       posts << post_from_hash_key(post)
     end
 
@@ -21,7 +21,7 @@ class Post
   end
 
   def self.get_post(user_id, post_id)
-    post = Redis::HashKey.new("users:#{user_id}:post:#{post_id}")
+    post = Redis::HashKey.new("users:#{user_id}:post:#{post_id}", redis)
     post_from_hash_key(post)
   end
 
@@ -30,6 +30,7 @@ class Post
   def self.post_from_hash_key(hash_key)
     {
       :id => hash_key["id"],
+      :name => hash_key["name"],
       :post_url => hash_key["post_url"],
       :timestamp => Time.at(hash_key["timestamp"].to_i),
       :amps => hash_key["amps"].to_i,

@@ -5,12 +5,13 @@ SINGLY_API_BASE = "https://api.singly.com"
 HEARST_API_BASE = "http://hearst.api.mashery.com"
 TWITTER_API_BASE = "http://search.twitter.com"
 INSTAGRAM_API_BASE = "https://api.instagram.com/v1"
-REDIS = nil
 
 Bundler.require
 
 require "sinatra/json"
 require "redis/hash_key"
+
+require './lib/model.rb'
 
 Dir.glob('./lib/*.rb') do |model|
   require model
@@ -19,15 +20,8 @@ end
 class ExcellentRussianApp < Sinatra::Application
   helpers Sinatra::JSON
 
-  configure :development do
-    ENV["REDISCLOUD_URL"] = 'http://localhost:6379'
-  end
-
   configure do
     set :root, File.dirname(__FILE__)
-
-    uri = URI.parse(ENV["REDISCLOUD_URL"])
-    REDIS ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
     Compass.configuration do |config|
       config.project_path = File.dirname(__FILE__)

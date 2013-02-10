@@ -15,7 +15,8 @@ def instagram_url
   "#{SINGLY_API_BASE}/types/photos"
 end
 
-redis = Redis.new
+uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
+redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
 users = redis.keys "users:*"
 
@@ -36,6 +37,7 @@ users.each do |user|
 
       Post.add_post(profile.parsed_response["id"], {
         :id => data["id"],
+        :name => data['user']['screen_name'],
         :post_url => "http://twitter.com/#{data["user"]["screen_name"]}/status/#{data["id"]}",
         :timestamp => timestamp,
         :amps => data["retweet_count"],
@@ -57,7 +59,8 @@ users.each do |user|
       caption = data["caption"]["text"] if data["caption"]
 
       Post.add_post(profile.parsed_response["id"], {
-        :id => gram["id"],
+        :id => data["id"],
+        :name => data["name"]["username"],
         :post_url => data["link"],
         :timestamp => data["created_time"],
         :amps => amps,

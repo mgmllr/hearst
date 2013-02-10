@@ -27,14 +27,14 @@
                 %span.tease= article["promo_teaser"]
                 %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
                   %span.editor= "// " + Hearst::EDITORS[name]
-  .leaderboard.span6
+  .leaderboard.span5
     %h3 #Leaderboard
     %ol
       - User.all.each do |user|
-        %li.span6
-          .user_card
+        %li
+          .user_card.span5
             .pic_score.span2
               %img.profile_pic{:src => user[:image] }
-              .score= "#{User.get_user_score(user[:id])}" + " pts" 
+              .score #{User.get_user_score(user[:id])} pts
             .name_info.span3
-              %span.user_name= user[:id]
+              %span.user_name= user[:name]
