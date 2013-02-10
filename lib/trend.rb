@@ -37,25 +37,25 @@ class Trend
     trends
   end
 
-  def self.score_for_post(object)      
-    shares = object[:shares]
-    trend = self.get_trend "#{object[:keyword]}" ##Make sure this is the right symbol!!!
-    score = calculate_timeliness(object, trend) * shares
-    score
+  def self.score_for_post(post)      
+    points = 0
+    post[:keywords].each do |keyword|
+      trend = get_trend("#{post[:keyword]}")
+      points += calculate_timeliness(post, trend)
+    end
+    points * post[:amps]
   end
 
-  def calculate_timeliness(object, trend)
-    if ##twitter
-      object_time = Time.parse object["data"]["created_at"]
-    if ##instagram
-      object_time = Time.at(object["data"]["created_time"])
-    trend_start = trend.first
+  def calculate_timeliness(post, trend)
     trend_count = trend[:mentions].count
+    mentions = trend[:mentions].sort {|a,b| a <=> b }
 
-    mentions = trend[:mentions].sort {|a,b| a < b }
+    post_index = 0
+    mentions.each do |mention|
+      post_index += 1 if mention < post[:timestamp]
+    end
 
-    object_index = trend[:mentions].index(object_time) + 1
-    if object_index == 1
+    if post_index == 0
       points = 1
     else
       case (tweet_index.to_f / trend_count.to_f)
@@ -71,6 +71,5 @@ class Trend
     end
     points
   end
-
 
 end
