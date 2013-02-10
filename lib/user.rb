@@ -1,6 +1,11 @@
 require 'redis/hash_key'
 
 class User
+  def self.redis
+    uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
+    @redis ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  end
+
   def self.add_user(profile, access_token)
     user = Redis::HashKey.new("users:#{profile["id"]}")
 
@@ -22,9 +27,7 @@ class User
     user = get_user(singly_id)
     total_score = 0
 
-    redis = Redis.new
     post_keys = redis.keys("users:#{singly_id}:post:*")
-
     post_keys.each do |pk|
       total_score += Trend.score_for_post(Post.get_post(pk.split(":")[1], pk.split(":")[3]))
     end
@@ -35,7 +38,6 @@ class User
   def self.all
     users = []
 
-    redis = Redis.new
     user_set = redis.keys "users:*"
     user_set.map! do |key|
       key_arr = key.split(":")

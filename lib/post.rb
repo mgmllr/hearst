@@ -1,6 +1,11 @@
 require 'redis/hash_key'
 
 class Post
+  def self.redis
+    uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
+    @redis ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  end
+
   def self.add_post(user_id, post_data)
     post = Redis::HashKey.new("users:#{user_id}:post:#{post_data[:id]}")
     post.bulk_set(post_data)
@@ -9,7 +14,6 @@ class Post
   def self.all
     posts = []
 
-    redis = Redis.new
     keys = redis.keys "users:*:post:*"
 
     keys.each do |key|

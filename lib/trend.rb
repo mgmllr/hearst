@@ -1,6 +1,11 @@
 require 'redis/set'
 
 class Trend
+  def self.redis
+    uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
+    @redis ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  end
+
   def self.add_mention(keyword, timestamp)
     trend_set = Redis::Set.new("trends:keys")
     trend_set << keyword
@@ -25,8 +30,7 @@ class Trend
   def self.all
     trends = []
 
-    redis = Redis.new
-    trend_set = redis.keys "trends:*:timestamps"
+    trend_set = Trend.redis.keys "trends:*:timestamps"
     trend_set.each do |member|
       keyword = member.split(':')[1]
       trends << get_trend(keyword)
