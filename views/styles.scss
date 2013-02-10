@@ -33,11 +33,11 @@ div.trending {
   margin-bottom: $small_space;
   padding: $small_space;
   background-color: $yellow;
-  overflow: hidden;
   h3 {
     color: $salmon;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 0.7em;
   }
   li {
     list-style: none;
@@ -56,44 +56,41 @@ div.trending {
 
 div.leaderboard {
   margin-bottom: $small_space;
+  margin-right: $small_space;
   padding: $small_space;
   background-color: white;
   h3{
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 0.7em;
   }
-  ol{
-    font-family: "Blanch", sans-serif;
-    font-weight: $heavy_weight;
-    font-size: 50px;
-    color: $blue;
-    padding: $small_space;
-    div.user_card {
+  div.user_card {
+    padding: $large_space;
+  }
+  div.pic_score {
+    margin-top: -13px;
+    margin-right: -10px;
+    img.profile_pic {
+      width: 100%;
+      vertical-align: text-top;
+    }
+    div.score {
+      background-color: black;
+      font-size: 15px;
+      color: white;
+      font-weight: $heavy_weight;
+      text-align: center;
+      padding: $small_space;
+    }
+  }
+  div.name_info {
+    font-size: 20px;
+    line-height: 1em;
+    span.user_name {
+      background-color: $blue;
+      color: white;
       padding: $large_space;
-      img.profile_pic {
-        width: 100%;
-        margin-top: -25px;
-        margin-right: -40px;
-        vertical-align: top;
-      }
-      div.score {
-        background-color: black;
-        font-size: 25px;
-        font-family: "Raleway", sans-serif;
-        color: white;
-        font-weight: $heavy_weight;
-        text-align: center;
-        padding: $small_space;
-      }
-      div.name_info {
-        font-family: "Raleway", sans-serif;
-        font-size: 40px;
-        span.user_name {
-          background-color: $blue;
-          color: white;
-        }
-      }
     }
   }
 }
@@ -106,6 +103,7 @@ div.editorial {
     color: $yellow;
     font-family: "Blanch", sans-serif;
     font-size: 50px;
+    line-height: 0.7em;
   }
   li {
     font-family: "Raleway", sans-serif;
