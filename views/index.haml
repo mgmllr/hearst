@@ -1,10 +1,20 @@
 %h1 - win fashion week -
-.trending_editorial.span5
-  %h3 #Trending Editorial
+.trending.span6
+  %h3 #Trending
   %ol  
-  - @trends.each do |k, v|
+  - @trends.each do |trend|
     %li
-      =k
-      =v
+      %span.trend= trend[:name]
+      %span.count= trend[:total_mentions]
 .leaderboard.span6
-  %h3 Leaderboard
+  %h3 #Leaderboard
+  %ol
+    %li EXAMPLE
+    %li EXAMPLE
+.editorial.span6
+  %h3 #Hearst Editorial
+  %ol
+  - @articles["items"].each do |article|
+    %li
+      %a{:href=> "#{article["canonical_url"]}"}
+        %span.title= article["title"]

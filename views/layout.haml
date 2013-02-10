@@ -7,9 +7,10 @@
     %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'css/bootstrap.css' }
     %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'css/bootstrap-responsive.css' }
     %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/stylesheet.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'http://fonts.googleapis.com/css?family=Raleway+Dots|Raleway:400,700,600,500,300'}
   %body
     / Header and Nav
-    .container
+    .container-fluid
       %header
         .navbar
           .navbar-inner
@@ -29,4 +30,14 @@
                 %a sign-in
       .hero
         =yield
-      %footer
+      %footer.span12
+        made lovingly in ruby, haml, and sass with sinatra, redis, and resque.
+        %br
+        using the Singly API, Hearst API, Twitter API, and Instagram API (by Singly proxy)
+        %br
+        %br
+        by michael hansen, ashley williams, and max miller
+        %br
+        for the #HearstFashionHack, February 2013
+        %br
+

@@ -5,6 +5,8 @@ $pink:  #FF0079;
 $salmon: #FF5B51;
 $small_pad: 5px;
 $large_pad: 10px;
+$heavy_weight: 600;
+$light_weight: 300;
 
 @font-family {
   font-family: "Blanch";
@@ -17,7 +19,7 @@ h1 {
   text-align: center;
 }
 
-div.trending_editorial {
+div.trending {
   background-color: $yellow;
   padding: $small_pad;
   h3 {
@@ -27,14 +29,52 @@ div.trending_editorial {
   }
   li {
     list-style: none;
+    span{
+      &.trend{
+        font-weight: $heavy_weight;
+      }
+      &.count{
+        font-weight: $light_weight;
+      }
+    }
   }
 }
 
 div.leaderboard {
   background-color: white;
+  padding: $small_pad;
   h3{
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
   }
+}
+
+div.editorial {
+background-color: $salmon;
+padding: $small_pad;
+  h3 {
+    color: $yellow;
+    font-family: "Blanch";
+    font-size: 50px;
+  }
+  li {
+    span{
+      &.title{
+        font-weight: $heavy_weight;
+        font-size: 12px;
+        color: black;
+      }
+    }
+  }
+}
+
+footer {
+  padding: $large_pad;
+  background-color: $blue;
+  color: white;
+  font-weight: $heavy_weight;
+  width: 100%;
+  display:block;
+
 }
