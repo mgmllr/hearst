@@ -68,14 +68,19 @@ class ExcellentRussianApp < Sinatra::Application
     haml :singly
   end
 
+  get "/clear_redis" do
+    r = Redis.new
+    r.keys.each {|key| r.del key }
+  end
+
   def get_user_data
     if session[:access_token]
       @profiles = HTTParty.get(profiles_url, {
         :query => {:access_token => session[:access_token]}
-        }).parsed_response
+      }).parsed_response
 
       User.add_user(@profiles, session[:access_token])
-      session[:current_user] = @profiles["id"]
+      session[:current_user] = @profiles["handle"]
 
       @photos = HTTParty.get(photos_url, {
         :query => {:access_token => session[:access_token]}

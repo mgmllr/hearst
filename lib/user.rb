@@ -3,10 +3,9 @@ require 'redis/hash_key'
 class User < Model
 
   def self.add_user(profile, access_token)
-    user = Redis::HashKey.new("users:#{profile["id"]}", redis)
+    user = Redis::HashKey.new("users:#{profile["handle"]}", redis)
 
     user.bulk_set({
-      "id" => profile["id"],
       "name" => profile["handle"],
       "image" => profile["gravatar"] || profile["thumbnail_url"],
       "twitter" => profile["services"].keys.include?("twitter"),
@@ -15,16 +14,16 @@ class User < Model
     })
   end
 
-  def self.get_user(singly_id)
-    user = Redis::HashKey.new("users:#{singly_id}", redis)
+  def self.get_user(username)
+    user = Redis::HashKey.new("users:#{username}", redis)
     user_from_hash_key(user)
   end
 
-  def self.get_user_score(singly_id)
-    user = get_user(singly_id)
+  def self.get_user_score(username)
+    user = get_user(username)
     total_score = 0
 
-    post_keys = redis.keys("users:#{singly_id}:post:*")
+    post_keys = redis.keys("users:#{username}:post:*")
     post_keys.each do |pk|
       total_score += Trend.score_for_post(Post.get_post(pk.split(":")[1], pk.split(":")[3]))
     end
@@ -54,7 +53,6 @@ class User < Model
 
   def self.user_from_hash_key(hash_key)
     {
-      :id =>        hash_key["id"],
       :name =>      hash_key["name"],
       :image =>     hash_key["image"],
       :twitter =>   hash_key["twitter"] == "true",

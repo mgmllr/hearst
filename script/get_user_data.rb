@@ -37,7 +37,7 @@ users.each do |user|
 
       Post.add_post(profile.parsed_response["id"], {
         :id => data["id"],
-        :name => data['user']['screen_name'],
+        :name => profile.parsed_response["handle"],
         :post_url => "http://twitter.com/#{data["user"]["screen_name"]}/status/#{data["id"]}",
         :timestamp => timestamp,
         :amps => data["retweet_count"],
@@ -60,7 +60,7 @@ users.each do |user|
 
       Post.add_post(profile.parsed_response["id"], {
         :id => data["id"],
-        :name => data["name"]["username"],
+        :name => profile.parsed_response["handle"],
         :post_url => data["link"],
         :timestamp => data["created_time"],
         :amps => amps,
