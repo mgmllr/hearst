@@ -4,11 +4,13 @@ class User
   def self.add_user(profile, access_token)
     user = Redis::HashKey.new("users:#{profile["id"]}")
 
-    user["id"]        = profile["id"]
-    user["image"]     = profile["gravatar"] || profile["thumbnail_url"]
-    user["twitter"]   = profile["services"].keys.include? "twitter"
-    user["instagram"] = profile["services"].keys.include? "instagram"
-    user["access_token"] = access_token
+    user.bulk_set({
+      "id" => profile["id"],
+      "image" => profile["gravatar"] || profile["thumbnail_url"],
+      "twitter" => profile["services"].keys.include? "twitter",
+      "instagram" => profile["services"].keys.include? "instagram",
+      "access_token" => access_token
+    })
   end
 
   def self.get_user(singly_id)

@@ -152,6 +152,10 @@ class ExcellentRussianApp < Sinatra::Application
     User.get_user(session[:current_user])
   end
 
+  def logged_in?
+    !session[:current_user].nil?
+  end
+
   def partial(haml_file)
     haml haml_file, :layout => false
   end
