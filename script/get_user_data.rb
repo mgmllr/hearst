@@ -19,22 +19,27 @@ redis = Redis.new
 
 users = redis.keys "users:*"
 
+Dir.glob('./lib/*.rb') do |model|
+  require model
+end
+
 users.each do |user|
   user = redis.hgetall user
   profile = HTTParty.get(singly_profile_url, {:query=> {:access_token=> user["access_token"]}})
   if user["twitter"] == "true"
     statuses = HTTParty.get(twitter_url, {:query=> {:access_token=> user["access_token"]}})
     statuses.each do |status|
-      keyword_array = status["data"]["entities"]["hashtags"].map {|ht| ht["text"] })
+      data = status["data"]
+      keyword_array = data["entities"]["hashtags"].map {|ht| ht["text"] }
       keyword_string = keyword_array.join(',')
       Post.add_post(profile.parsed_response["id"], {
-          :id => status["data"]["id"],
-          :post_url => "http://twitter.com/#{status["user"]["screen_name"]}/status/#{status["data"]["id"]}",
-          :timestamp => status["data"]["created_at"],
-          :amps => status["data"]["retweet_count"],
-          :content => status["data"]["text"],
+          :id => data["id"],
+          :post_url => "http://twitter.com/#{data["user"]["screen_name"]}/status/#{data["id"]}",
+          :timestamp => data["created_at"],
+          :amps => data["retweet_count"],
+          :content => data["text"],
           :keywords => keyword_string,
-          :img_url => status["data"]["media"]["media_url"]
+          :img_url => data["media"] ? data["media"]["media_url"] : nil
       })
       end
   end

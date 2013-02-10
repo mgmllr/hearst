@@ -7,8 +7,8 @@ class User
     user.bulk_set({
       "id" => profile["id"],
       "image" => profile["gravatar"] || profile["thumbnail_url"],
-      "twitter" => profile["services"].keys.include? "twitter",
-      "instagram" => profile["services"].keys.include? "instagram",
+      "twitter" => profile["services"].keys.include?("twitter"),
+      "instagram" => profile["services"].keys.include?("instagram"),
       "access_token" => access_token
     })
   end
