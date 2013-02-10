@@ -37,8 +37,9 @@ h1{
 
 div.trending {
   margin-bottom: $small_space;
-  padding: $small_space;
+  padding: $large_space;
   background-color: $yellow;
+  border: dotted white;
   h3 {
     color: $salmon;
     font-family: "Blanch";
@@ -62,11 +63,10 @@ div.trending {
 
 div.leaderboard {
   margin-bottom: $small_space;
-  margin-right: $small_space;
   padding: $small_space;
-  background-color: white;
+  background-color: $blue;
   h3{
-    color: $blue;
+    color: $yellow;
     font-family: "Blanch";
     font-size: 50px;
     line-height: 0.7em;
@@ -76,7 +76,7 @@ div.leaderboard {
   }
   div.pic_score {
     margin-top: -13px;
-    margin-right: -10px;
+    margin-top: -10px;
     img.profile_pic {
       width: 100%;
       vertical-align: text-top;
@@ -87,16 +87,29 @@ div.leaderboard {
       color: white;
       font-weight: $heavy_weight;
       text-align: center;
-      padding: $small_space;
+      padding: $large_space;
     }
   }
   div.name_info {
+    margin-top: -$large_space;
+    margin-right: $small_space; 
+    padding-top: $large_space;
+    padding-right: $large_space;
+    background-color: white;
     font-size: 20px;
     line-height: 1em;
+    a{
+      color: black;
+      &:hover {
+        text-decoration: none;
+        color: grey;
+      }
+    }
     span {
       &.user_rank {
-        background-color: $blue;
-        color: white;
+        margin-top: 2px;
+        background-color: $yellow;
+        color: $salmon;
         padding: $large_space;
       }
       &.user_name {
@@ -111,19 +124,24 @@ div.leaderboard {
         overflow: hidden;
       }
       &.post_details {
+        background-color: $blue;
         div{
-          padding: $large_space;
+          padding: $small_space;
           &.post_score {
             background-color: $salmon;
+            margin-right: -20px;
             color: white;
             font-weight: $heavy_weight;
-            font-size: 15px;
+            font-size: 12px;
             text-align: center;
+            padding-right: 20px;
           }
           &.post_time {
-            font-size: 10px;
-            color: $blue;
+            text-align: right;
+            font-size: 12px;
+            color: white;
             overflow: hidden;
+            font-style: italic;
           }
         }
       }
@@ -146,7 +164,9 @@ div.editorial {
     line-height: 0.7em;
   }
   li {
-    margin-bottom: 10px;
+    border-bottom: dotted $yellow 2px;
+    padding: $small_space;
+    margin: 10px 0px;
     a {
       font-weight: $heavy_weight;
       color: white;
@@ -233,14 +253,14 @@ header {
     text-decoration: none;
   }
   a.brnd {
-    color: $salmon;
+    color: $yellow;
     display: block;
     float: left;
     padding: 10px 20px 10px;
     margin-left: -10px;
     font-size: 20px;
     &:hover{
-      color: $yellow;
+      color: $salmon;
     }
   }
   .auth{
