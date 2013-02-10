@@ -55,6 +55,9 @@ class ExcellentRussianApp < Sinatra::Application
 
   get '/' do
     @trends = Trend.all
+    json = StringIO.new(HTTParty.get(articles_url, {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}))
+    parser = Yajl::Parser.new
+    @articles = parser.parse(json)
     haml :index
   end
 
