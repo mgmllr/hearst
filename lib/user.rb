@@ -62,7 +62,7 @@ class User < Model
       user[:posts].each do |post|
         score += post[:score]
       end
-      user[:score] = score
+      user[:score] = score.to_i
       user
     end
 
