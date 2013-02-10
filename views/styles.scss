@@ -13,6 +13,21 @@ $light_weight: 300;
   src: url("fonts/BLANCH_CONDENSED_LIGHT.otf");
 }
 
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+#push,
+#footer {
+    height: 60px;
+}
+
 h1 {
   font-family: "Blanch";
   font-size: 100px;
@@ -70,6 +85,11 @@ background-color: $salmon;
       }
     }
   }
+}
+
+img.nav_prof {
+  width: 30px;
+  padding: $small_space;
 }
 
 footer {
