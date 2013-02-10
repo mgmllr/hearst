@@ -3,16 +3,16 @@ require 'redis/set'
 class Trend < Model
 
   def self.add_mention(keyword, timestamp)
-    trend_set = Redis::Set.new("trends:keys")
+    trend_set = Redis::Set.new("trends:keys", redis)
     trend_set << keyword
 
-    set = Redis::Set.new("trends:#{keyword}:timestamps")
+    set = Redis::Set.new("trends:#{keyword}:timestamps", redis)
     timestamp = Time.parse(timestamp).to_i
     set << timestamp
   end
 
   def self.get_trend(keyword)
-    timestamps = Redis::Set.new("trends:#{keyword}:timestamps")
+    timestamps = Redis::Set.new("trends:#{keyword}:timestamps", redis)
     timestamps = timestamps.members
     timestamps.map! {|time_str| Time.at(time_str.to_i) }
 
@@ -26,7 +26,7 @@ class Trend < Model
   def self.all
     trends = []
 
-    trend_set = Trend.redis.keys "trends:*:timestamps"
+    trend_set = redis.keys "trends:*:timestamps"
     trend_set.each do |member|
       keyword = member.split(':')[1]
       trends << get_trend(keyword)

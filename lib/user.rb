@@ -3,7 +3,7 @@ require 'redis/hash_key'
 class User < Model
 
   def self.add_user(profile, access_token)
-    user = Redis::HashKey.new("users:#{profile["id"]}")
+    user = Redis::HashKey.new("users:#{profile["id"]}", redis)
 
     user.bulk_set({
       "id" => profile["id"],
@@ -15,7 +15,7 @@ class User < Model
   end
 
   def self.get_user(singly_id)
-    user = Redis::HashKey.new("users:#{singly_id}")
+    user = Redis::HashKey.new("users:#{singly_id}", redis)
     user_from_hash_key(user)
   end
 
@@ -42,7 +42,7 @@ class User < Model
     user_set.uniq!
 
     user_set.each do |member|
-      user = Redis::HashKey.new(member)
+      user = Redis::HashKey.new(member, redis)
       users << user_from_hash_key(user)
     end
 
