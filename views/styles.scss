@@ -126,12 +126,6 @@ div.editorial {
   }
 }
 
-
-img.nav_prof {
-  width: 30px;
-  padding: $small_space;
-}
-
 footer {
   padding: $small_space;
   margin: $small_space;
@@ -187,6 +181,12 @@ div#about {
 }
 
 header {
+  img {
+    width: 40px;
+  }
+  a:hover{
+    text-decoration: none;
+  }
   a.brnd {
     color: $salmon;
     display: block;
@@ -194,29 +194,16 @@ header {
     padding: 10px 20px 10px;
     margin-left: -10px;
     font-size: 20px;
-    text-decoration: none;
-  }
-  a.brnd:hover {
-    color: $yellow;
-  }
-  a.clickit {
-    color: white;
-    &:hover {
-      color: $blue;
+    &:hover{
+      color: $yellow;
     }
   }
-  div.auth{
-    padding: $large_space;
-  }
-  a.auth{
+  .auth{
     background-color: $royal;
     padding: $large_space;
-    margin: -$large_space;
     color: white;
-    text-decoration: none;
-    font-weight: $heavy_weight;
     &:hover{
-      background-color: $blue;
+      text-decoration: none;
     }
   }
 }
