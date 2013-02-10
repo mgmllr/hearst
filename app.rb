@@ -20,7 +20,7 @@ class ExcellentRussianApp < Sinatra::Application
   helpers Sinatra::JSON
 
   configure :development do
-    ENV["REDISCLOUD_URL"] = 'http://localhost:6379'
+    ENV["REDISCLOUD_URL"] ||= 'http://localhost:6379'
   end
 
   configure do
