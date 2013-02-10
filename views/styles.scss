@@ -3,8 +3,8 @@ $yellow: #FFFF4C;
 $blue: #00CCCB;
 $pink:  #FF0079;
 $salmon: #FF5B51;
-$small_pad: 5px;
-$large_pad: 10px;
+$small_space: 5px;
+$large_space: 10px;
 $heavy_weight: 600;
 $light_weight: 300;
 
@@ -20,8 +20,9 @@ h1 {
 }
 
 div.trending {
+  margin: $small_space;
+  padding: $small_space;
   background-color: $yellow;
-  padding: $small_pad;
   h3 {
     color: $salmon;
     font-family: "Blanch";
@@ -41,8 +42,9 @@ div.trending {
 }
 
 div.leaderboard {
+  margin: $small_space;
+  padding: $small_space;
   background-color: white;
-  padding: $small_pad;
   h3{
     color: $blue;
     font-family: "Blanch";
@@ -51,8 +53,9 @@ div.leaderboard {
 }
 
 div.editorial {
+margin: $small_space;
+padding: $small_space;
 background-color: $salmon;
-padding: $small_pad;
   h3 {
     color: $yellow;
     font-family: "Blanch";
@@ -61,8 +64,8 @@ padding: $small_pad;
   li {
     span{
       &.title{
+        font-family: "Raleway";
         font-weight: $heavy_weight;
-        font-size: 12px;
         color: black;
       }
     }
@@ -70,11 +73,9 @@ padding: $small_pad;
 }
 
 footer {
-  padding: $large_pad;
+  padding: $small_space;
   background-color: $blue;
   color: white;
   font-weight: $heavy_weight;
   width: 100%;
-  display:block;
-
 }

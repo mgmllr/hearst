@@ -10,34 +10,25 @@
     %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'http://fonts.googleapis.com/css?family=Raleway+Dots|Raleway:400,700,600,500,300'}
   %body
     / Header and Nav
+    %header
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          %a.brand #WinNYFW
+          %ul.nav
+            %li.active
+              %a{:href=> "/"} Home
+          %a.sign-in.pull-right{:href=> "/singly"} Sign-in
     .container-fluid
-      %header
-        .navbar
-          .navbar-inner
-            %a.brand logo
-            %ul.nav
-              %li.active
-                %a{:href=> "/"} home
-              %li
-                %a{:href=> "/singly"} singly
-              %li
-                %a{:href=> "/hearst"} hearst
-              %li
-                %a{:href=> "/twitter"} twitter
-              %li
-                %a{:href=> "/instagram"} instagram
-              %li
-                %a sign-in
       .hero
         =yield
-      %footer.span12
-        made lovingly in ruby, haml, and sass with sinatra, redis, and resque.
-        %br
-        using the Singly API, Hearst API, Twitter API, and Instagram API (by Singly proxy)
-        %br
-        %br
-        by michael hansen, ashley williams, and max miller
-        %br
-        for the #HearstFashionHack, February 2013
-        %br
+    %footer
+      made lovingly in ruby, haml, and sass with sinatra, redis, and resque.
+      %br
+      using the Singly API, Hearst API, Twitter API, and Instagram API (by Singly proxy)
+      %br
+      %br
+      by michael hansen, ashley williams, and max miller
+      %br
+      for the #HearstFashionHack, February 2013
+      %br
 
