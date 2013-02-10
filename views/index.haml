@@ -41,7 +41,7 @@
         .user_card.row-fluid
           .pic_score.span4
             %img.profile_pic{:src => user[:image] }
-            .score #{user[:score]} pts
+            .score #{user[:score].round} pts
           .name_info.span8
             %span.user_rank= count
             %span.user_name= "@" + "#{user[:name]}"
@@ -50,7 +50,7 @@
                 .user_post="#{post[:content]}"
               .post_details.row-fluid
                 .post_time.span8="#{post[:timestamp].strftime("Posted at %T on %m/%d/%Y")}"
-                .post_score.span4="Score: #{post[:score]}"
+                .post_score.span4="Score: #{post[:score].round}"
             - else
               .user_post.alert No Data Available
 
