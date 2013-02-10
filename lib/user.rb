@@ -46,6 +46,13 @@ class User < Model
       users << user_from_hash_key(user)
     end
 
+    users.map! do |user|
+      user[:score] = User.get_user_score(user[:name])
+      user
+    end
+
+    users.sort! {|a, b| b[:score] <=> a[:score] }
+
     users
   end
 
