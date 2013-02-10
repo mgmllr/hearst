@@ -20,6 +20,7 @@ redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.passwor
 
 users = redis.keys "users:*"
 
+require './lib/model.rb'
 Dir.glob('./lib/*.rb') do |model|
   require model
 end
