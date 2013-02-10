@@ -82,6 +82,7 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/twitter" do
     @tweets = HTTParty.get(twitter_url, {:query=> {:include_entities=> true, :q=>"\#HearstFashionHack"}})
+    puts @tweets.first.inspect
     haml :twitter
   end
 
@@ -104,8 +105,6 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/auth/singly/callback" do
     auth = request.env["omniauth.auth"]
-    puts "**********************"
-    puts auth
     session[:access_token] = auth.credentials.token
     redirect "/singly"
   end

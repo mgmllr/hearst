@@ -1,4 +1,6 @@
 %h1 Twitter Example
 - @tweets["results"].each do |tweet|
   %ul
-    %li= tweet
+    %li
+      %img.prof_pic{:src=> "#{tweet["profile_image_url"]}"}
+      =tweet["text"]
