@@ -90,8 +90,9 @@ class ExcellentRussianApp < Sinatra::Application
     if session[:access_token]
       params = {:query=> {:access_token=> session[:access_token]}}.inspect
       puts params.inspect
-      puts instagram_url("HearstFashionHack")
-      @grams = HTTParty.get(instagram_url("HearstFashionHack"), {:query=> {:access_token=> session[:access_token]}})
+      @tag = "HearstFashionHack"
+      # puts instagram_url(@tag)
+      @grams = HTTParty.get(instagram_url(@tag), {:query=> {:access_token=> session[:access_token]}})
       puts @grams.inspect
     else
       redirect "/singly"
