@@ -11,6 +11,8 @@ Bundler.require
 require "sinatra/json"
 require "redis/hash_key"
 
+require './lib/model.rb'
+
 Dir.glob('./lib/*.rb') do |model|
   require model
 end
