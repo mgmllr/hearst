@@ -15,9 +15,12 @@ $light_weight: 300;
 }
 
 div#landing{
-  padding-top: 20px;
   html, body {
     height: 100%;
+  }
+  div#banner{
+    padding: $large_space;
+    margin-top: $large_space;
   }
 }
 
@@ -101,10 +104,9 @@ div.leaderboard {
         margin-top: $large_space;
         padding: $large_space;
         font-size: 15px;
+        overflow: hidden;
       }
       &.post_details {
-        font-size: 15px;
-        color: $blue;
         div{
           padding: $large_space;
           &.post_score {
@@ -113,6 +115,11 @@ div.leaderboard {
             font-weight: $heavy_weight;
             font-size: 15px;
             text-align: center;
+          }
+          &.post_time {
+            font-size: 10px;
+            color: $blue;
+            overflow: hidden;
           }
         }
       }
@@ -161,12 +168,13 @@ footer {
 }
 
 div.singly {
+  overflow: hidden;
   text-align: center;
   overflow: none;
   border-style: dotted;
   background-color: $blue;
   border-color: white;
-  margin: 20px;
+  margin: 20px 0px;
   h2{
     font-family: "Blanch";
     font-size: 60px;
@@ -174,6 +182,7 @@ div.singly {
     line-height: 1.1em;
   }
   a.bttn {
+    width: 200px;
     padding: $large_space;
     font-weight: $heavy_weight;
     -webkit-border-radius: 6px;
@@ -181,10 +190,16 @@ div.singly {
         border-radius: 6px;
     background-color: $royal;
     color: white;
+    margin: $large_space;
     &:hover{
       text-decoration: none;
       background-color: $salmon;
     }
+  }
+  div.bttns {
+    width: 450px;
+    margin: auto;
+    display: inline-block;
   }
 }
 
@@ -202,6 +217,7 @@ div#about {
 }
 
 header {
+  height: 50px;
   img {
     width: 40px;
   }
