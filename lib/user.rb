@@ -39,6 +39,7 @@ class User < Model
       key_arr = key.split(":")
       "users:#{key_arr[1]}"
     end
+
     user_set.uniq!
 
     user_set.each do |member|
@@ -47,7 +48,17 @@ class User < Model
     end
 
     users.map! do |user|
-      user[:score] = User.get_user_score(user[:name]).round
+      user[:posts] = Post.get_user_posts(user[:name])
+      user[:posts].map! do |post|
+        post[:score] = Trend.score_for_post(post)
+        post
+      end
+      user[:posts].sort! {|a, b| b[:score] <=> a[:score] }
+      user
+    end
+
+    users.map! do |user|
+      user[:score] = user[:posts].map{|p| p[:score] }.inject{|sum, x| sum + x }
       user
     end
 
