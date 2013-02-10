@@ -62,6 +62,9 @@ div.leaderboard {
   ol{
     font-weight: $heavy_weight;
     div.user_card {
+      img.profile_pic {
+        width: 100%;
+      }
       div.score {
         background-color: black;
         color: white;
@@ -70,7 +73,6 @@ div.leaderboard {
         padding: $small_space;
       }
       div.name_info {
-        padding: $small_space;
         span.user_name {
           background-color: $blue;
           color: white;
@@ -90,11 +92,18 @@ div.editorial {
     font-size: 50px;
   }
   li {
+    font-family: "Raleway", sans-serif;
+    a {
+      font-weight: $heavy_weight;
+      color: white;
+    }
     span{
-      &.title{
-        font-family: "Raleway", sans-serif;
+      color: black;
+      &.title {
         font-weight: $heavy_weight;
-        color: black;
+      }
+      &.editor {
+        color: white;
       }
     }
   }
@@ -113,10 +122,12 @@ footer {
   font-weight: $heavy_weight;
   width: 100%;
   text-align: right;
+  margin-top: $large_space;
 }
 
 div.singly {
   margin-bottom: $large_space;
+  padding: $large_space;
   text-align: center;
   h2{
     font-family: "Blanch";
@@ -130,7 +141,18 @@ div.singly {
 div#about {
   margin-top: $large_space;
   border-style: dotted;
-  border-color: black;
+  border-color: $yellow;
+  padding: $large_space;
+  span.highlight{
+    color: $salmon;
+    font-weight: $heavy_weight;
+  }
+}
+
+header {
+  div.auth{
+    padding: $large_space;
+  }
 }
 
 #wrap {
