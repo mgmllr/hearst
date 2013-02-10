@@ -30,7 +30,7 @@ class TrendProcessor
     tweets = @json_hash["results"]
     tweets.each do |tweet|
       tweet["entities"]["hashtags"].each do |hastag|
-        @trend_hash.incr(hastag["text"], 1)
+        @trend_hash.incr(hastag["text"].downcase, 1)
       end
     end
   end
