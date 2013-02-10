@@ -2,5 +2,10 @@
 Enter a keyword
 %input{:type=> "text"}
 %a.btn.btn-primary Search
-.articles
-  %p= @articles
+%p= @articles
+
+/ - @articles.each do |article|
+/   .articles
+/     - if article["items"]
+/       %h1= article["items"]["promo_title"]
+/       %h3= article["items"]["description"]
