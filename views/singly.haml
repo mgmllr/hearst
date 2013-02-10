@@ -1,18 +1,19 @@
-%h1 Singly OAuth Example
 - if @profiles
-  %h3.text-success= "Nice to see you again!"
+  .alert.alert-success
+    %strong Nice to see you again!
 - else
-  %h3.text-warning= "Please connect a service"
+  .alert
+    %strong Please connect a service
 
-- if session[:access_token]
-  %p= "Your access token is"
-  %input{:type=> "text", :value=>"#{session[:access_token]}", :readonly=>"readonly"}
-  %a.btn.btn-warning{:href=>"/logout"}Log out
-%ul
-- %w[twitter instagram].each do |service|
-  %li="#{service.capitalize}"
-  -if @profiles && @profiles["services"][service]
-    - @photos.each do |pic|
-      %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
-  -else
-    %a.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect
+%h1 Join the Battle
+.singlysignin.span12
+  - if session[:access_token]
+    %p= "Your access token is"
+    %input{:type=> "text", :value=>"#{session[:access_token]}", :readonly=>"readonly"}
+    %a.btn.btn-warning{:href=>"/logout"}Log out
+  - %w[twitter instagram].each do |service|
+    -if @profiles && @profiles["services"][service]
+      - @photos.each do |pic|
+        %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
+    -else
+      %a.signin.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
