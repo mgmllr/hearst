@@ -21,8 +21,7 @@ h1{
   font-family: "Blanch";
   font-size: 100px;
   text-align: center;
-  padding: $large_space;
-  margin: $large_space;
+  line-height: 1.1em;
 }
 
 div.trending {
@@ -34,6 +33,7 @@ div.trending {
     color: $salmon;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 1.1em;
   }
   li {
     list-style: none;
@@ -58,6 +58,7 @@ div.leaderboard {
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 1.1em;
   }
   ol{
     font-weight: $heavy_weight;
@@ -90,6 +91,7 @@ div.editorial {
     color: $yellow;
     font-family: "Blanch", sans-serif;
     font-size: 50px;
+    line-height: 1.1em;
   }
   li {
     font-family: "Raleway", sans-serif;
@@ -126,13 +128,23 @@ footer {
 }
 
 div.singly {
-  margin-bottom: $large_space;
-  padding: $large_space;
   text-align: center;
+  background-color: $blue;
   h2{
     font-family: "Blanch";
     font-size: 60px;
-    color: $salmon;
+    color: $yellow;
+    line-height: 1.1em;
+  }
+  a.bttn {
+    font-family: "Raleway", sans-serif;
+    font-weight: $heavy_weight;
+    padding: $large_space;
+    -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+        border-radius: 6px;
+    background-color: $purple;
+    color: white;
   }
 }
 

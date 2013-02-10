@@ -1,10 +1,10 @@
 #landing
   %h1 - win fashion week -
-  .singly.span12
+  .singly
     - unless @profiles
-      %h2 Join the Battle
-      - %w[twitter instagram].each do |service|
-        %a.signin.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
+      %h2  Join the Battle
+      - %w[twitter instagram].each do |service| 
+        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with #{service}
   .hot_stuff.span5
     .trending
       %h3 #Trending
