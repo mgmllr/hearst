@@ -5,7 +5,19 @@ Enter a keyword
 
 - @articles["items"].each do |article|
   .articles
+    - if article["author_first_name"] && article["author_last_name"]
+      - name = article["author_first_name"] + " " + article["author_last_name"]
+      - if Hearst::EDITORS[name]
+        %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
+          %p= Hearst::EDITORS[name]
     %a{:href=> "#{article["canonical_url"]}"}
       %h2= article["title"]
       %h4= article["promo_teaser"]
-    
+
+
+- @articles["items"].each do |article|  
+  - if article["body"][0]["custom_slide_links"]
+    .images
+    - article["body"][0]["custom_slide_links"][0]["slide_links"].each do |image|
+      %a{:href=> "#{article["canonical_url"]}"}
+        %img{:src=> "#{image["link_url"]}"}
