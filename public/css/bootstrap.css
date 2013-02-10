@@ -4198,7 +4198,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover,
 .nav > li.dropdown.open.active > a:focus {
-  color: #ffffff;
+  color: #FF5B51;
   background-color: #999999;
   border-color: #999999;
 }
