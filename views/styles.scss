@@ -10,7 +10,7 @@ $light_weight: 300;
 
 @font-family {
   font-family: "Blanch";
-  src: url(fonts/BLANCH_CONDENSED_LIGHT.otf);
+  src: url("fonts/BLANCH_CONDENSED_LIGHT.otf");
 }
 
 h1 {
@@ -58,13 +58,13 @@ padding: $small_space;
 background-color: $salmon;
   h3 {
     color: $yellow;
-    font-family: "Blanch";
+    font-family: "Blanch", sans-serif;
     font-size: 50px;
   }
   li {
     span{
       &.title{
-        font-family: "Raleway";
+        font-family: "Raleway", sans-serif;
         font-weight: $heavy_weight;
         color: black;
       }
