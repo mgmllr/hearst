@@ -40,7 +40,7 @@ class Trend < Model
   def self.score_for_post(post, trendset)
     points = 0
     post[:keywords].each do |keyword|
-      trend = get_trend(keyword, trendset)
+      trend = get_trend(trendset, keyword)
       points += calculate_timeliness(post, trend)
     end
     points * post[:amps]
