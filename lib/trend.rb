@@ -58,18 +58,18 @@ class Trend
     if post_index == 0
       points = 1
     else
-      case (tweet_index.to_f / trend_count.to_f)
-      when <= 0.1
+      quotient = (tweet_index.to_f / trend_count.to_f)
+      case 
+      when quotient <= 0.1
           points = 0.75
-      when > 0.1 && <= 0.25
+      when quotient > 0.1 && quotient <= 0.25
           points = 0.5
-      when > 0.25 && <= 0.5
+      when quotient > 0.25 && quotient <= 0.5
           points = 0.25
-      when > 0.5
+      when quotient > 0.5
           points = 0.1
       end
     end
     points
   end
-
 end
