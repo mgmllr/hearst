@@ -72,6 +72,7 @@ class ExcellentRussianApp < Sinatra::Application
         }).parsed_response
 
       User.add_user(@profiles, session[:access_token])
+      session[:current_user] = @profiles["id"]
 
       @photos = HTTParty.get(photos_url, {
         :query => {:access_token => session[:access_token]}
@@ -139,6 +140,10 @@ class ExcellentRussianApp < Sinatra::Application
 
   def instagram_url(tag)
     "#{SINGLY_API_BASE}/proxy/instagram/tags/#{tag}/media/recent"
+  end
+
+  def current_user
+    User.get_user(session[:current_user])
   end
 end
 

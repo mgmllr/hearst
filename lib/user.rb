@@ -12,7 +12,8 @@ class User
   end
 
   def self.get_user(singly_id)
-    Redis::HashKey.new("users:#{singly_id}")
+    user = Redis::HashKey.new("users:#{singly_id}")
+    user_from_hash_key(user)
   end
 
   def self.all
@@ -23,15 +24,22 @@ class User
 
     user_set.each do |member|
       user = Redis::HashKey.new(member)
-      users << {
-        :id =>        user["id"],
-        :image =>  user["image"],
-        :twitter =>   user["twitter"] == "true",
-        :instagram => user["instagram"] == "true",
-        :access_token => user["access_token"],
-      }
+      users << user_from_hash_key(user)
     end
 
     users
   end
+
+  private
+
+  def self.user_from_hash_key(hash_key)
+    {
+      :id =>        hash_key["id"],
+      :image =>     hash_key["image"],
+      :twitter =>   hash_key["twitter"] == "true",
+      :instagram => hash_key["instagram"] == "true",
+      :access_token => hash_key["access_token"],
+    }
+  end
+
 end
