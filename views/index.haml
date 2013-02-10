@@ -49,7 +49,7 @@
               %a{:href=> "#"}
                 .user_post="#{post[:content]}"
               .post_details.row-fluid
-                .post_time.span8="#{post[:timestamp]}"
+                .post_time.span8="#{post[:timestamp].strftime("Posted at %T on %m/%d/%Y")}"
                 .post_score.span4="Score: #{post[:score]}"
             - else
               .user_post.alert No Data Available
