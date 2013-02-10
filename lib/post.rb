@@ -20,6 +20,19 @@ class Post < Model
     posts
   end
 
+  def self.get_user_posts(user_id)
+    posts = []
+
+    keys = redis.keys "users:#{user_id}:post:*"
+
+    keys.each do |key|
+      post = Redis::HashKey.new(key, redis)
+      posts << post_from_hash_key(post)
+    end
+
+    posts
+  end
+
   def self.get_post(user_id, post_id)
     post = Redis::HashKey.new("users:#{user_id}:post:#{post_id}", redis)
     post_from_hash_key(post)
