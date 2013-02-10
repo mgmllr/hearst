@@ -1,55 +1,59 @@
-#landing.row-fluid
-  .banner
+#landing
+  #banner
     %h1 - win fashion week -
   #flash
   - unless @profiles
     .singly
       %h2  Join the Battle
-      - %w[twitter instagram].each do |service| 
-        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
-  .hot_stuff.span5
-    %div.row-fluid
-      .trending
-        %h3 #Trending
-        %ol  
-        - @trends.each do |trend|
-          - bar_width = trend[:total_mentions]*10
-          %li
-            .bar{:style=> "width: #{bar_width}px;"}
-            .trend= trend[:name]
-      .editorial
-        %h3 #Hearst Editorial
-        %ol
-          - @articles["items"].each do |article|
-            - if article["author_first_name"] && article["author_last_name"]
-              - name = article["author_first_name"] + " " + article["author_last_name"]
-              - if Hearst::EDITORS[name]
-                %li
-                  %a{:href=> "#{article["canonical_url"]}"}
-                    %span.title= article["title"]
-                  %span.tease= article["promo_teaser"]
-                  %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
-                    %span.editor= "// " + Hearst::EDITORS[name]
-  .leaderboard.span6
-    %h3 #Leaderboard
-    - count = 0
-    - @users.each do |user|
-      - count = count + 1
-      - post =  user[:posts][0]
-      .user_card.row-fluid
-        .pic_score.span4
-          %img.profile_pic{:src => user[:image] }
-          .score #{user[:score]} pts
-        .name_info.span8
-          %span.user_rank= count
-          %span.user_name= "@" + "#{user[:name]}"
-          - if post
-            .user_post="#{post[:content]}"
-            .post_details.row-fluid
-              .post_time.span8="#{post[:timestamp]}"
-              .post_score.span4="Score: #{post[:score]}"
-          - else
-            .user_post.alert No Data Available
+      .bttns.row-fluid
+        - %w[twitter instagram].each do |service| 
+          %a.signin.bttn.span6{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
+  .row-fluid
+    .hot_stuff.span5
+      .row-fluid
+        .trending
+          %h3 #Trending
+          %ol  
+          - @trends.each do |trend|
+            - bar_width = trend[:total_mentions]*10
+            %li
+              .bar{:style=> "width: #{bar_width}px;"}
+              .trend= trend[:name]
+        .editorial
+          %h3 #Hearst Editorial
+          %ol
+            - @articles["items"].each do |article|
+              - if article["author_first_name"] && article["author_last_name"]
+                - name = article["author_first_name"] + " " + article["author_last_name"]
+                - if Hearst::EDITORS[name]
+                  %li
+                    %a{:href=> "#{article["canonical_url"]}"}
+                      %span.title= article["title"]
+                    %span.tease= article["promo_teaser"]
+                    %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
+                      %span.editor= "// " + Hearst::EDITORS[name]
+    .leaderboard.span6
+      %h3 #Leaderboard
+      - count = 0
+      - User.all.each do |user|
+        - count = count + 1
+        - post =  user[:posts][0]
+        .user_card.row-fluid
+          .pic_score.span4
+            %img.profile_pic{:src => user[:image] }
+            .score #{user[:score]} pts
+          .name_info.span8
+            %span.user_rank= count
+            %span.user_name= "@" + "#{user[:name]}"
+            - if post
+              %a{:href=> "#"}
+                .user_post="#{post[:content]}"
+              .post_details.row-fluid
+                .post_time.span8="#{post[:timestamp]}"
+                .post_score.span4="Score: #{post[:score]}"
+            - else
+              .user_post.alert No Data Available
+
 #about
   %h1 What?
   %p #WinNYFW is a game.
