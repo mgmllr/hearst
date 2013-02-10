@@ -45,6 +45,11 @@ div.trending {
       }
     }
   }
+  div.bar {
+    position: relative;
+    height: 20px;
+    background-color: $salmon;
+  }
 }
 
 div.leaderboard {
@@ -89,6 +94,7 @@ footer {
   color: white;
   font-weight: $heavy_weight;
   width: 100%;
+  text-align: right;
 }
 
 div.singly {
@@ -100,6 +106,8 @@ div.singly {
     color: $salmon;
   }
 }
+
+
 
 div#about {
   margin-top: $large_space;
