@@ -2,6 +2,7 @@ class UserFeedJob
   @queue = :processing
 
   def self.perform(data)
-    # data = response.body from Taskmaster class
+    ufp = UserFeedProcessor.new(data)
+    ufp.process
   end
 end

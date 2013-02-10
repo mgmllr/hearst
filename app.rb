@@ -104,6 +104,8 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/auth/singly/callback" do
     auth = request.env["omniauth.auth"]
+    puts "**********************"
+    puts auth
     session[:access_token] = auth.credentials.token
     redirect "/singly"
   end
