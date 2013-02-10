@@ -8,7 +8,6 @@ $small_space: 5px;
 $large_space: 10px;
 $heavy_weight: 600;
 $light_weight: 300;
-$shadowy: 0 1px 0 #ffffff;
 
 @font-family {
   font-family: "Blanch";
@@ -111,7 +110,6 @@ div.editorial {
     line-height: 0.7em;
   }
   li {
-    font-family: "Raleway", sans-serif;
     a {
       font-weight: $heavy_weight;
       color: white;
@@ -161,7 +159,6 @@ div.singly {
     line-height: 1.1em;
   }
   a.bttn {
-    font-family: "Raleway", sans-serif;
     padding: $large_space;
     font-weight: $heavy_weight;
     -webkit-border-radius: 6px;
