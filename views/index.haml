@@ -7,9 +7,9 @@
       %h2  Join the Battle
       .bttns.row-fluid
         - %w[twitter instagram].each do |service| 
-          %a.signin.bttn.span6{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
-  .row-fluid
-    .hot_stuff.span5
+          %a.signin.bttn.span6{:href=>"/auth/singly?service=#{service}"} Connect with #{service.capitalize}
+  .content.row-fluid
+    .hot_stuff.span4
       .row-fluid
         .trending
           %h3 #Trending
@@ -32,7 +32,7 @@
                     %span.tease= article["promo_teaser"]
                     %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
                       %span.editor= "// " + Hearst::EDITORS[name]
-    .leaderboard.span6
+    .leaderboard.span7
       %h3 #Leaderboard
       - count = 0
       - User.all.each do |user|

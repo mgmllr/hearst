@@ -24,6 +24,10 @@ div#landing{
   }
 }
 
+.content {
+  margin-top: $large_space;
+}
+
 h1{
   font-family: "Blanch";
   font-size: 100px;
@@ -168,13 +172,11 @@ footer {
 }
 
 div.singly {
-  overflow: hidden;
   text-align: center;
-  overflow: none;
   border-style: dotted;
   background-color: $blue;
   border-color: white;
-  margin: 20px 0px;
+  margin: 20px 0px 40px 0px;
   h2{
     font-family: "Blanch";
     font-size: 60px;
@@ -183,6 +185,7 @@ div.singly {
   }
   a.bttn {
     width: 200px;
+    display: inline-block;
     padding: $large_space;
     font-weight: $heavy_weight;
     -webkit-border-radius: 6px;
@@ -190,16 +193,16 @@ div.singly {
         border-radius: 6px;
     background-color: $royal;
     color: white;
-    margin: $large_space;
     &:hover{
       text-decoration: none;
       background-color: $salmon;
     }
   }
   div.bttns {
-    width: 450px;
+    width: 420px;
     margin: auto;
-    display: inline-block;
+    text-align: center;
+    margin-bottom: -20px;
   }
 }
 
