@@ -35,7 +35,7 @@
     .leaderboard.span6
       %h3 #Leaderboard
       - count = 0
-      - User.all.each do |user|
+      - @users.each do |user|
         - count = count + 1
         - post =  user[:posts][0]
         .user_card.row-fluid
