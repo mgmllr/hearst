@@ -8,11 +8,10 @@
   %h3 #Trending
   %ol  
   - @trends.each do |trend|
-    - bar_width = trend[:total_mentions]*20
+    - bar_width = trend[:total_mentions]*15
     %li
-      %span.count
-        .bar{:style=> "width: #{bar_width}px;"}
-        %span.trend= trend[:name]
+      .bar{:style=> "width: #{bar_width}px;"}
+      .trend= trend[:name]
 .leaderboard.span4
   %h3 #Leaderboard
   %ol

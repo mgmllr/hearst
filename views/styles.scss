@@ -29,6 +29,7 @@ div.trending {
   margin-bottom: $small_space;
   padding: $small_space;
   background-color: $yellow;
+  overflow: hidden;
   h3 {
     color: $salmon;
     font-family: "Blanch";
@@ -36,19 +37,16 @@ div.trending {
   }
   li {
     list-style: none;
-    span{
-      &.trend{
-        font-weight: $heavy_weight;
-      }
-      &.count{
-        font-weight: $light_weight;
-      }
+    padding: $small_space;
+    div.trend{
+      font-weight: $heavy_weight;
     }
   }
   div.bar {
-    position: relative;
+    float: left;
     height: 20px;
     background-color: $salmon;
+    margin-right: $small_space;
   }
 }
 
