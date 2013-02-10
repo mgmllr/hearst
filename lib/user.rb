@@ -58,7 +58,11 @@ class User < Model
     end
 
     users.map! do |user|
-      user[:score] = user[:posts].map{|p| p[:score] }.inject{|sum, x| sum + x }
+      score = 0
+      user[:posts].each do |post|
+        score += post[:score]
+      end
+      user[:score] = score
       user
     end
 

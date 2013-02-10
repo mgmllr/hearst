@@ -8,7 +8,6 @@ $small_space: 5px;
 $large_space: 10px;
 $heavy_weight: 600;
 $light_weight: 300;
-$shadowy: 0 1px 0 #ffffff;
 
 @font-face {
   font-family: "Blanch";
@@ -33,11 +32,11 @@ div.trending {
   margin-bottom: $small_space;
   padding: $small_space;
   background-color: $yellow;
-  overflow: hidden;
   h3 {
     color: $salmon;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 0.7em;
   }
   li {
     list-style: none;
@@ -56,42 +55,65 @@ div.trending {
 
 div.leaderboard {
   margin-bottom: $small_space;
+  margin-right: $small_space;
   padding: $small_space;
   background-color: white;
   h3{
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 0.7em;
   }
-  ol{
-    font-family: "Blanch", sans-serif;
-    font-weight: $heavy_weight;
-    font-size: 50px;
-    color: $blue;
-    padding: $small_space;
-    div.user_card {
-      padding: $large_space;
-      img.profile_pic {
-        width: 100%;
-        margin-top: -25px;
-        margin-right: -40px;
-        vertical-align: top;
-      }
-      div.score {
-        background-color: black;
-        font-size: 25px;
-        font-family: "Raleway", sans-serif;
+  div.user_card {
+    padding: $large_space;
+  }
+  div.pic_score {
+    margin-top: -13px;
+    margin-right: -10px;
+    img.profile_pic {
+      width: 100%;
+      vertical-align: text-top;
+    }
+    div.score {
+      background-color: black;
+      font-size: 15px;
+      color: white;
+      font-weight: $heavy_weight;
+      text-align: center;
+      padding: $small_space;
+    }
+  }
+  div.name_info {
+    font-size: 20px;
+    line-height: 1em;
+    span {
+      &.user_rank {
+        background-color: $blue;
         color: white;
-        font-weight: $heavy_weight;
-        text-align: center;
-        padding: $small_space;
+        padding: $large_space;
       }
-      div.name_info {
-        font-family: "Raleway", sans-serif;
-        font-size: 40px;
-        span.user_name {
-          background-color: $blue;
-          color: white;
+      &.user_name {
+        font-weight: $heavy_weight;
+      }
+    }
+    div{
+      &.user_post {
+        margin-top: $large_space;
+        padding: $large_space;
+        font-size: 15px;
+      }
+      &.post_details {
+        font-size: 15px;
+        color: $blue;
+        div{
+          padding: $large_space;
+          &.post_score {
+            background-color: $salmon;
+            color: white;
+            font-weight: $heavy_weight;
+            font-size: 15px;
+            text-align: center;
+          }
         }
       }
     }
@@ -106,9 +128,9 @@ div.editorial {
     color: $yellow;
     font-family: "Blanch", sans-serif;
     font-size: 50px;
+    line-height: 0.7em;
   }
   li {
-    font-family: "Raleway", sans-serif;
     a {
       font-weight: $heavy_weight;
       color: white;
@@ -123,12 +145,6 @@ div.editorial {
       }
     }
   }
-}
-
-
-img.nav_prof {
-  width: 30px;
-  padding: $small_space;
 }
 
 footer {
@@ -158,7 +174,6 @@ div.singly {
     line-height: 1.1em;
   }
   a.bttn {
-    font-family: "Raleway", sans-serif;
     padding: $large_space;
     font-weight: $heavy_weight;
     -webkit-border-radius: 6px;
@@ -187,6 +202,12 @@ div#about {
 }
 
 header {
+  img {
+    width: 40px;
+  }
+  a:hover{
+    text-decoration: none;
+  }
   a.brnd {
     color: $salmon;
     display: block;
@@ -194,29 +215,16 @@ header {
     padding: 10px 20px 10px;
     margin-left: -10px;
     font-size: 20px;
-    text-decoration: none;
-  }
-  a.brnd:hover {
-    color: $yellow;
-  }
-  a.clickit {
-    color: white;
-    &:hover {
-      color: $blue;
+    &:hover{
+      color: $yellow;
     }
   }
-  div.auth{
-    padding: $large_space;
-  }
-  a.auth{
+  .auth{
     background-color: $royal;
     padding: $large_space;
-    margin: -$large_space;
     color: white;
-    text-decoration: none;
-    font-weight: $heavy_weight;
     &:hover{
-      background-color: $blue;
+      text-decoration: none;
     }
   }
 }
