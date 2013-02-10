@@ -4,7 +4,7 @@
     - unless @profiles
       %h2  Join the Battle
       - %w[twitter instagram].each do |service| 
-        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with #{service}
+        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with #{service.capitalize}
   .hot_stuff.span5
     .trending
       %h3 #Trending
