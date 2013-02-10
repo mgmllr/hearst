@@ -3,10 +3,12 @@ $yellow: #FFFF4C;
 $blue: #00CCCB;
 $pink:  #FF0079;
 $salmon: #FF5B51;
+$royal: #4700BF;
 $small_space: 5px;
 $large_space: 10px;
 $heavy_weight: 600;
 $light_weight: 300;
+$shadowy: 0 1px 0 #ffffff;
 
 @font-family {
   font-family: "Blanch";
@@ -143,7 +145,7 @@ div.singly {
     -webkit-border-radius: 6px;
       -moz-border-radius: 6px;
         border-radius: 6px;
-    background-color: $purple;
+    background-color: $royal;
     color: white;
   }
 }
@@ -162,6 +164,19 @@ div#about {
 }
 
 header {
+  a.brnd {
+    color: $royal;
+    display: block;
+    float: left;
+    padding: 10px 20px 10px;
+    margin-left: -20px;
+    font-size: 20px;
+    font-weight: 200;
+    text-decoration: none;
+  }
+  a.brnd:hover {
+    color: $blue;
+  }
   div.auth{
     padding: $large_space;
   }
