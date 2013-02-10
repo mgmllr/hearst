@@ -54,6 +54,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get '/' do
+    get_user_data
     @trends = Trend.all
     json = StringIO.new(HTTParty.get(articles_url, {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}))
     parser = Yajl::Parser.new
@@ -69,6 +70,11 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get "/singly" do
+    get_user_data
+    haml :singly
+  end
+
+  def get_user_data
     if session[:access_token]
       @profiles = HTTParty.get(profiles_url, {
         :query => {:access_token => session[:access_token]}
@@ -81,7 +87,6 @@ class ExcellentRussianApp < Sinatra::Application
         :query => {:access_token => session[:access_token]}
         }).parsed_response
     end
-    haml :singly
   end
 
   get "/hearst" do
@@ -121,6 +126,10 @@ class ExcellentRussianApp < Sinatra::Application
     puts auth.inspect
     session[:access_token] = auth.credentials.token
     redirect "/"
+  end
+
+  get "/about" do
+    haml :about
   end
 
   get "/logout" do

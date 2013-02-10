@@ -14,10 +14,10 @@
       %header
         .navbar.navbar-fixed-top.navbar-inverse
           .navbar-inner
-            %a.brand #WinNYFW
+            %a.brand{:href=> "/"} #WinNYFW
             %ul.nav
-              %li.active
-                %a{:href=> "/"} Home
+              %li
+                %a{:href=> "/about"} What?
             .auth
               - if current_user[:image]
                 %a.auth.pull-right{:href=> "/logout"} Sign-out
@@ -25,7 +25,7 @@
               - else  
                 %a.auth.pull-right{:href=> "/singly"} Sign-in
       .container-fluid
-        .hero
+        .hero.span12
           =yield
       #push
     %footer

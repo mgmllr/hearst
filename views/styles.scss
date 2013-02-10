@@ -17,25 +17,16 @@ html, body {
     height: 100%;
 }
 
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -60px;
-}
-#push,
-#footer {
-    height: 60px;
-}
-
-h1 {
+h1{
   font-family: "Blanch";
   font-size: 100px;
   text-align: center;
+  padding: $large_space;
+  margin: $large_space;
 }
 
 div.trending {
-  margin: $small_space;
+  margin-bottom: $small_space;
   padding: $small_space;
   background-color: $yellow;
   h3 {
@@ -57,7 +48,7 @@ div.trending {
 }
 
 div.leaderboard {
-  margin: $small_space;
+  margin-bottom: $small_space;
   padding: $small_space;
   background-color: white;
   h3{
@@ -68,9 +59,9 @@ div.leaderboard {
 }
 
 div.editorial {
-margin: $small_space;
-padding: $small_space;
-background-color: $salmon;
+  margin-bottom: $small_space;
+  padding: $small_space;
+  background-color: $salmon;
   h3 {
     color: $yellow;
     font-family: "Blanch", sans-serif;
@@ -100,7 +91,29 @@ footer {
   width: 100%;
 }
 
-.signlysignin {
-  margin-top: $large_space;
+div.singly {
+  margin-bottom: $large_space;
   text-align: center;
+  h2{
+    font-family: "Blanch";
+    font-size: 60px;
+    color: $salmon;
+  }
+}
+
+div#about {
+  margin-top: $large_space;
+  border-style: dotted;
+  border-color: black;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+#push,
+#footer {
+    height: 60px;
 }

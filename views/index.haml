@@ -1,4 +1,9 @@
 %h1 - win fashion week -
+.singly.span12
+  - unless @profiles
+    %h2 Join the Battle
+    - %w[twitter instagram].each do |service|
+      %a.signin.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
 .trending.span6
   %h3 #Trending
   %ol  
@@ -6,12 +11,12 @@
     %li
       %span.trend= trend[:name]
       %span.count= trend[:total_mentions]
-.leaderboard.span6
+.leaderboard.span4
   %h3 #Leaderboard
   %ol
     %li EXAMPLE
     %li EXAMPLE
-.editorial.span12
+.editorial.span6
   %h3 #Hearst Editorial
   %ol
   - @articles["items"].each do |article|
