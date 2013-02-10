@@ -7,6 +7,7 @@ class User < Model
 
     user.bulk_set({
       "id" => profile["id"],
+      "name" => profile["handle"],
       "image" => profile["gravatar"] || profile["thumbnail_url"],
       "twitter" => profile["services"].keys.include?("twitter"),
       "instagram" => profile["services"].keys.include?("instagram"),
@@ -54,11 +55,11 @@ class User < Model
   def self.user_from_hash_key(hash_key)
     {
       :id =>        hash_key["id"],
+      :name =>      hash_key["name"],
       :image =>     hash_key["image"],
       :twitter =>   hash_key["twitter"] == "true",
       :instagram => hash_key["instagram"] == "true",
       :access_token => hash_key["access_token"],
     }
   end
-
 end

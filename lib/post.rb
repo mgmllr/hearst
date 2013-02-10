@@ -30,6 +30,7 @@ class Post < Model
   def self.post_from_hash_key(hash_key)
     {
       :id => hash_key["id"],
+      :name => hash_key["name"],
       :post_url => hash_key["post_url"],
       :timestamp => Time.at(hash_key["timestamp"].to_i),
       :amps => hash_key["amps"].to_i,

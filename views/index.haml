@@ -34,5 +34,6 @@
       %li
         .user_card.span5
           .pic_score
+            %h2 #{user[:name]}
             %img.profile_pic.img-polaroid{:src => user[:image] }
             .score #{User.get_user_score(user[:id])} pts
