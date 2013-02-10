@@ -31,8 +31,10 @@
   %h3 #Leaderboard
   %ol
     - User.all.each do |user|
-      %li
-        .user_card.span5
-          .pic_score
-            %img.profile_pic.img-polaroid{:src => user[:image] }
-            .score #{User.get_user_score(user[:id])} pts
+      %li.span5
+        .user_card
+          .pic_score.span2
+            %img.profile_pic{:src => user[:image] }
+            .score= "#{User.get_user_score(user[:id])}" + " pts" 
+          .name_info
+            %span.user_name= user[:id]

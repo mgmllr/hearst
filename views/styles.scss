@@ -59,6 +59,25 @@ div.leaderboard {
     font-family: "Blanch";
     font-size: 50px;
   }
+  ol{
+    font-weight: $heavy_weight;
+    div.user_card {
+      div.score {
+        background-color: black;
+        color: white;
+        font-weight: $heavy_weight;
+        text-align: center;
+        padding: $small_space;
+      }
+      div.name_info {
+        padding: $small_space;
+        span.user_name {
+          background-color: $blue;
+          color: white;
+        }
+      }
+    }
+  }
 }
 
 div.editorial {
@@ -77,19 +96,6 @@ div.editorial {
         font-weight: $heavy_weight;
         color: black;
       }
-    }
-  }
-}
-
-div.user_card {
-  img.profile_pic {
-    width: 100px;
-  }
-  div.score {
-    background-color: black;
-    color: white;
-    span.label{
-      color: $blue;
     }
   }
 }
