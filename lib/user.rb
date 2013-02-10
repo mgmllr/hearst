@@ -18,11 +18,30 @@ class User
     user_from_hash_key(user)
   end
 
+  def self.get_user_score(singly_id)
+    user = get_user(singly_id)
+    total_score = 0
+
+    redis = Redis.new
+    post_keys = redis.keys("users:#{singly_id}:post:*")
+
+    post_keys.each do |pk|
+      total_score += Trend.score_for_post(Post.get_post(pk.split(":")[1], pk.split(":")[3]))
+    end
+
+    total_score
+  end
+
   def self.all
     users = []
 
     redis = Redis.new
     user_set = redis.keys "users:*"
+    user_set.map! do |key|
+      key_arr = key.split(":")
+      "users:#{key_arr[1]}"
+    end
+    user_set.uniq!
 
     user_set.each do |member|
       user = Redis::HashKey.new(member)

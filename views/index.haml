@@ -2,26 +2,28 @@
 .trending.span6
   %h3 #Trending
   %ol  
-  - @trends.each do |trend|
-    %li
-      %span.trend= trend[:name]
-      %span.count= trend[:total_mentions]
+    - @trends.each do |trend|
+      %li
+        %span.trend= trend[:name]
+        %span.count= trend[:total_mentions]
 .leaderboard.span6
   %h3 #Leaderboard
   %ol
-    %li EXAMPLE
-    %li EXAMPLE
+    - User.all.each do |user|
+      %li
+        %img{:src => user[:image] }
+        %h2 Score: #{User.get_user_score(user[:id])}
 .editorial.span12
   %h3 #Hearst Editorial
   %ol
-  - @articles["items"].each do |article|
-    - if article["author_first_name"] && article["author_last_name"]
-      - name = article["author_first_name"] + " " + article["author_last_name"]
-      - if Hearst::EDITORS[name]
-        %li
-          %a{:href=> "#{article["canonical_url"]}"}
-            %span.title= article["title"]
-          %span.tease= article["promo_teaser"]
-          via
-          %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
-            %span.editor= Hearst::EDITORS[name]
+    - @articles["items"].each do |article|
+      - if article["author_first_name"] && article["author_last_name"]
+        - name = article["author_first_name"] + " " + article["author_last_name"]
+        - if Hearst::EDITORS[name]
+          %li
+            %a{:href=> "#{article["canonical_url"]}"}
+              %span.title= article["title"]
+            %span.tease= article["promo_teaser"]
+            via
+            %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
+              %span.editor= Hearst::EDITORS[name]
