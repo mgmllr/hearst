@@ -31,7 +31,7 @@ class User < Model
     total_score
   end
 
-  def self.all
+  def self.all(trendset = '*')
     users = []
 
     user_set = redis.keys "users:*"
@@ -50,7 +50,7 @@ class User < Model
     users.map! do |user|
       user[:posts] = Post.get_user_posts(user[:name])
       user[:posts].map! do |post|
-        post[:score] = Trend.score_for_post(post)
+        post[:score] = Trend.score_for_post(post, trendset)
         post
       end
       user[:posts].sort! {|a, b| b[:score] <=> a[:score] }

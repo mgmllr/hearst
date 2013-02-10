@@ -7,12 +7,13 @@ class TrendProcessor
     Resque.enqueue(TrendFeedJob, http_response, service)
   end
 
-  def initialize(http_response, service)
+  def initialize(http_response, service, trendset)
     json = StringIO.new(http_response)
     parser = Yajl::Parser.new
 
     @json_hash = parser.parse(json)
     @service = service
+    @trendset = trendset
   end
 
   def process
@@ -28,7 +29,7 @@ class TrendProcessor
     tweets = @json_hash["results"]
     tweets.each do |tweet|
       tweet["entities"]["hashtags"].each do |hashtag|
-        Trend.add_mention(hashtag["text"].downcase, tweet["created_at"])
+        Trend.add_mention(hashtag["text"].downcase, @trendset, tweet["created_at"])
       end
     end
   end

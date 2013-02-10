@@ -2,17 +2,17 @@ require 'redis/set'
 
 class Trend < Model
 
-  def self.add_mention(keyword, timestamp)
-    trend_set = Redis::Set.new("trends:keys", redis)
+  def self.add_mention(keyword, trendset, timestamp)
+    trend_set = Redis::Set.new("trends:#{trendset}:keys", redis)
     trend_set << keyword
 
-    set = Redis::Set.new("trends:#{keyword}:timestamps", redis)
+    set = Redis::Set.new("trends:#{trendset}:#{keyword}:timestamps", redis)
     timestamp = Time.parse(timestamp).to_i
     set << timestamp
   end
 
-  def self.get_trend(keyword)
-    timestamps = Redis::Set.new("trends:#{keyword}:timestamps", redis)
+  def self.get_trend(trendset, keyword)
+    timestamps = Redis::Set.new("trends:#{trendset}:#{keyword}:timestamps", redis)
     timestamps = timestamps.members
     timestamps.map! {|time_str| Time.at(time_str.to_i) }
 
@@ -23,13 +23,13 @@ class Trend < Model
     }
   end
 
-  def self.all
+  def self.all(trendset = '*')
     trends = []
 
-    trend_set = redis.keys "trends:*:timestamps"
+    trend_set = redis.keys "trends:#{trendset}:*:timestamps"
     trend_set.each do |member|
-      keyword = member.split(':')[1]
-      trends << get_trend(keyword)
+      keyword = member.split(':')[2]
+      trends << get_trend(trendset, keyword)
     end
 
     trends.sort! {|a, b| b[:total_mentions] <=> a[:total_mentions] }
@@ -37,10 +37,10 @@ class Trend < Model
     trends
   end
 
-  def self.score_for_post(post)      
+  def self.score_for_post(post, trendset)
     points = 0
     post[:keywords].each do |keyword|
-      trend = get_trend(keyword)
+      trend = get_trend(trendset, keyword)
       points += calculate_timeliness(post, trend)
     end
     points * post[:amps]

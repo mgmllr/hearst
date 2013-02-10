@@ -49,8 +49,20 @@ class ExcellentRussianApp < Sinatra::Application
 
   get '/' do
     get_user_data
-    @trends = Trend.all
+    @trendset = 'hackathon'
+    @trends = Trend.all(@trendset)
+    @users = User.all(@trendset)
     json = StringIO.new(HTTParty.get(articles_url, {:query=> {:keywords=> "fashion", :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}))
+    parser = Yajl::Parser.new
+    @articles = parser.parse(json)
+    haml :index
+  end
+
+  get '/trendset/:trendset' do
+    get_user_data
+    @trends = Trend.all(params[:trendset])
+    @users = User.all(params[:trendset])
+    json = StringIO.new(HTTParty.get(articles_url, {:query=> {:keywords=> params[:trendset], :api_key=>"nvp2n7m2b6stwn3xha8m4ype"}}))
     parser = Yajl::Parser.new
     @articles = parser.parse(json)
     haml :index
