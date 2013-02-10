@@ -12,12 +12,14 @@ $shadowy: 0 1px 0 #ffffff;
 
 @font-family {
   font-family: "Blanch";
-  src: url("fonts/BLANCH_CONDENSED_LIGHT.otf");
+  src: url(fonts/BLANCH_CONDENSED_LIGHT.otf);
 }
 
-html, body {
+div#landing{
   padding-top: 20px;
-  height: 100%;
+  html, body {
+    height: 100%;
+  }
 }
 
 h1{
@@ -148,7 +150,7 @@ div.singly {
   border-style: dotted;
   background-color: $blue;
   border-color: white;
-  margin: 20px 0px;
+  margin: 20px;
   h2{
     font-family: "Blanch";
     font-size: 60px;
