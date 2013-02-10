@@ -16,7 +16,8 @@ $shadowy: 0 1px 0 #ffffff;
 }
 
 html, body {
-    height: 100%;
+  padding-top: 20px;
+  height: 100%;
 }
 
 h1{
@@ -35,7 +36,6 @@ div.trending {
     color: $salmon;
     font-family: "Blanch";
     font-size: 50px;
-    line-height: 1.1em;
   }
   li {
     list-style: none;
@@ -60,22 +60,33 @@ div.leaderboard {
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
-    line-height: 1.1em;
   }
   ol{
+    font-family: "Blanch", sans-serif;
     font-weight: $heavy_weight;
+    font-size: 50px;
+    color: $blue;
+    padding: $small_space;
     div.user_card {
+      padding: $large_space;
       img.profile_pic {
         width: 100%;
+        margin-top: -25px;
+        margin-right: -40px;
+        vertical-align: top;
       }
       div.score {
         background-color: black;
+        font-size: 25px;
+        font-family: "Raleway", sans-serif;
         color: white;
         font-weight: $heavy_weight;
         text-align: center;
         padding: $small_space;
       }
       div.name_info {
+        font-family: "Raleway", sans-serif;
+        font-size: 40px;
         span.user_name {
           background-color: $blue;
           color: white;
@@ -93,7 +104,6 @@ div.editorial {
     color: $yellow;
     font-family: "Blanch", sans-serif;
     font-size: 50px;
-    line-height: 1.1em;
   }
   li {
     font-family: "Raleway", sans-serif;
@@ -121,17 +131,24 @@ img.nav_prof {
 
 footer {
   padding: $small_space;
+  margin: $small_space;
   background-color: $blue;
   color: white;
   font-weight: $heavy_weight;
   width: 100%;
   text-align: right;
   margin-top: $large_space;
+  border-top-color: white;
+  border-top-style: dotted;
 }
 
 div.singly {
   text-align: center;
+  overflow: none;
+  border-style: dotted;
   background-color: $blue;
+  border-color: white;
+  margin: 20px 0px;
   h2{
     font-family: "Blanch";
     font-size: 60px;
@@ -140,13 +157,17 @@ div.singly {
   }
   a.bttn {
     font-family: "Raleway", sans-serif;
-    font-weight: $heavy_weight;
     padding: $large_space;
+    font-weight: $heavy_weight;
     -webkit-border-radius: 6px;
       -moz-border-radius: 6px;
         border-radius: 6px;
     background-color: $royal;
     color: white;
+    &:hover{
+      text-decoration: none;
+      background-color: $salmon;
+    }
   }
 }
 
@@ -165,20 +186,36 @@ div#about {
 
 header {
   a.brnd {
-    color: $royal;
+    color: $salmon;
     display: block;
     float: left;
     padding: 10px 20px 10px;
-    margin-left: -20px;
+    margin-left: -10px;
     font-size: 20px;
-    font-weight: 200;
     text-decoration: none;
   }
   a.brnd:hover {
-    color: $blue;
+    color: $yellow;
+  }
+  a.clickit {
+    color: white;
+    &:hover {
+      color: $blue;
+    }
   }
   div.auth{
     padding: $large_space;
+  }
+  a.auth{
+    background-color: $royal;
+    padding: $large_space;
+    margin: -$large_space;
+    color: white;
+    text-decoration: none;
+    font-weight: $heavy_weight;
+    &:hover{
+      background-color: $blue;
+    }
   }
 }
 

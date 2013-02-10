@@ -1,10 +1,11 @@
 #landing
-  %h1 - win fashion week -
+  .banner
+    %h1 - win fashion week -
   .singly
     - unless @profiles
       %h2  Join the Battle
       - %w[twitter instagram].each do |service| 
-        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with #{service.capitalize}
+        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
   .hot_stuff.span5
     .trending
       %h3 #Trending
@@ -27,14 +28,14 @@
                 %span.tease= article["promo_teaser"]
                 %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
                   %span.editor= "// " + Hearst::EDITORS[name]
-  .leaderboard.span5
+  .leaderboard.span6
     %h3 #Leaderboard
     %ol
       - User.all.each do |user|
-        %li
-          .user_card.span5
+        %li.span6
+          .user_card
             .pic_score.span2
               %img.profile_pic{:src => user[:image] }
-              .score #{User.get_user_score(user[:id])} pts
+              .score= "#{User.get_user_score(user[:id])}" + " pts"
             .name_info.span3
-              %span.user_name= user[:name]
+              %span.user_name= "@" + "#{user[:name]}"

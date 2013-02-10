@@ -14,16 +14,10 @@
       %header
         .navbar.navbar-fixed-top.navbar-inverse
           .navbar-inner
-            %a.brnd{:href=> "/"} #WinNYFW
+            %a.brnd{:href=> "/"} #winNYFW
             %ul.nav
               %li
-                %a{:href=> "/about"} What?
-            .auth
-              - if current_user[:image]
-                %a.auth.pull-right{:href=> "/logout"} Sign-out
-                %img.nav_prof.pull-right{ :src => current_user[:image] }  
-              - else  
-                %a.auth.pull-right{:href=> "/singly"} Sign-in
+                %a.clickit{:href=> "/about"} What?
       .container-fluid
         =yield
       #push
