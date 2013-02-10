@@ -15,7 +15,7 @@ def instagram_url
   "#{SINGLY_API_BASE}/types/photos"
 end
 
-uri = URI.parse(ENV["REDISCLOUD_URL"]) || "http://localhost:6379"
+uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
 redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
 users = redis.keys "users:*"

@@ -1,10 +1,6 @@
 require 'redis/hash_key'
 
-class User
-  def self.redis
-    uri = URI.parse(ENV["REDISCLOUD_URL"] || "http://localhost:6379")
-    @redis ||= Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-  end
+class User < Model
 
   def self.add_user(profile, access_token)
     user = Redis::HashKey.new("users:#{profile["id"]}")
