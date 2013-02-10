@@ -10,6 +10,7 @@ REDIS = nil
 Bundler.require
 
 require "sinatra/json"
+require "redis/hash_key"
 
 Dir.glob('./lib/*.rb') do |model|
   require model
@@ -53,6 +54,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get '/' do
+    @trends = Redis::HashKey.new("trends")
     haml :index
   end
 
