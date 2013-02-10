@@ -13,11 +13,12 @@ Enter a keyword
     %a{:href=> "#{article["canonical_url"]}"}
       %h2= article["title"]
       %h4= article["promo_teaser"]
+      %p= article["keywords"].split(', ')
 
 
-- @articles["items"].each do |article|  
-  - if article["body"][0]["custom_slide_links"]
-    .images
-    - article["body"][0]["custom_slide_links"][0]["slide_links"].each do |image|
-      %a{:href=> "#{article["canonical_url"]}"}
-        %img{:src=> "#{image["link_url"]}"}
+/ - @articles["items"].each do |article|  
+/   - if article["body"][0]["custom_slide_links"]
+/     .images
+/     - article["body"][0]["custom_slide_links"][0]["slide_links"].each do |image|
+/       %a{:href=> "#{article["canonical_url"]}"}
+/         %img{:src=> "#{image["link_thumb_url"]}"}
