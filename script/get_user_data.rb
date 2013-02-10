@@ -60,7 +60,7 @@ users.each do |user|
 
       Post.add_post(profile.parsed_response["id"], {
         :id => data["id"],
-        :name => data["name"]["username"],
+        :name => data["user"]["username"],
         :post_url => data["link"],
         :timestamp => data["created_time"],
         :amps => amps,
