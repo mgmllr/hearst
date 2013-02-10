@@ -21,8 +21,7 @@ h1{
   font-family: "Blanch";
   font-size: 100px;
   text-align: center;
-  padding: $large_space;
-  margin: $large_space;
+  line-height: 1.1em;
 }
 
 div.trending {
@@ -34,6 +33,7 @@ div.trending {
     color: $salmon;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 1.1em;
   }
   li {
     list-style: none;
@@ -58,6 +58,28 @@ div.leaderboard {
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
+    line-height: 1.1em;
+  }
+  ol{
+    font-weight: $heavy_weight;
+    div.user_card {
+      img.profile_pic {
+        width: 100%;
+      }
+      div.score {
+        background-color: black;
+        color: white;
+        font-weight: $heavy_weight;
+        text-align: center;
+        padding: $small_space;
+      }
+      div.name_info {
+        span.user_name {
+          background-color: $blue;
+          color: white;
+        }
+      }
+    }
   }
 }
 
@@ -69,27 +91,22 @@ div.editorial {
     color: $yellow;
     font-family: "Blanch", sans-serif;
     font-size: 50px;
+    line-height: 1.1em;
   }
   li {
-    span{
-      &.title{
-        font-family: "Raleway", sans-serif;
-        font-weight: $heavy_weight;
-        color: black;
-      }
+    font-family: "Raleway", sans-serif;
+    a {
+      font-weight: $heavy_weight;
+      color: white;
     }
-  }
-}
-
-div.user_card {
-  img.profile_pic {
-    width: 100px;
-  }
-  div.score {
-    background-color: black;
-    color: white;
-    span.label{
-      color: $blue;
+    span{
+      color: black;
+      &.title {
+        font-weight: $heavy_weight;
+      }
+      &.editor {
+        color: white;
+      }
     }
   }
 }
@@ -107,15 +124,27 @@ footer {
   font-weight: $heavy_weight;
   width: 100%;
   text-align: right;
+  margin-top: $large_space;
 }
 
 div.singly {
-  margin-bottom: $large_space;
   text-align: center;
+  background-color: $blue;
   h2{
     font-family: "Blanch";
     font-size: 60px;
-    color: $salmon;
+    color: $yellow;
+    line-height: 1.1em;
+  }
+  a.bttn {
+    font-family: "Raleway", sans-serif;
+    font-weight: $heavy_weight;
+    padding: $large_space;
+    -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+        border-radius: 6px;
+    background-color: $purple;
+    color: white;
   }
 }
 
@@ -124,7 +153,18 @@ div.singly {
 div#about {
   margin-top: $large_space;
   border-style: dotted;
-  border-color: black;
+  border-color: $yellow;
+  padding: $large_space;
+  span.highlight{
+    color: $salmon;
+    font-weight: $heavy_weight;
+  }
+}
+
+header {
+  div.auth{
+    padding: $large_space;
+  }
 }
 
 #wrap {

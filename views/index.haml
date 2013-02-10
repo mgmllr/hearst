@@ -1,38 +1,40 @@
-%h1 - win fashion week -
-.singly.span12
-  - unless @profiles
-    %h2 Join the Battle
-    - %w[twitter instagram].each do |service|
-      %a.signin.btn.btn-primary{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
-.hot_stuff.span5
-  .trending
-    %h3 #Trending
-    %ol  
-    - @trends.each do |trend|
-      - bar_width = trend[:total_mentions]*10
-      %li
-        .bar{:style=> "width: #{bar_width}px;"}
-        .trend= trend[:name]
-  .editorial
-    %h3 #Hearst Editorial
+#landing
+  %h1 - win fashion week -
+  .singly
+    - unless @profiles
+      %h2  Join the Battle
+      - %w[twitter instagram].each do |service| 
+        %a.signin.bttn{:href=>"/auth/singly?service=#{service}"} Connect with #{service}
+  .hot_stuff.span5
+    .trending
+      %h3 #Trending
+      %ol  
+      - @trends.each do |trend|
+        - bar_width = trend[:total_mentions]*10
+        %li
+          .bar{:style=> "width: #{bar_width}px;"}
+          .trend= trend[:name]
+    .editorial
+      %h3 #Hearst Editorial
+      %ol
+        - @articles["items"].each do |article|
+          - if article["author_first_name"] && article["author_last_name"]
+            - name = article["author_first_name"] + " " + article["author_last_name"]
+            - if Hearst::EDITORS[name]
+              %li
+                %a{:href=> "#{article["canonical_url"]}"}
+                  %span.title= article["title"]
+                %span.tease= article["promo_teaser"]
+                %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
+                  %span.editor= "// " + Hearst::EDITORS[name]
+  .leaderboard.span6
+    %h3 #Leaderboard
     %ol
-      - @articles["items"].each do |article|
-        - if article["author_first_name"] && article["author_last_name"]
-          - name = article["author_first_name"] + " " + article["author_last_name"]
-          - if Hearst::EDITORS[name]
-            %li
-              %a{:href=> "#{article["canonical_url"]}"}
-                %span.title= article["title"]
-              %span.tease= article["promo_teaser"]
-              via
-              %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
-                %span.editor= Hearst::EDITORS[name]
-.leaderboard.span5
-  %h3 #Leaderboard
-  %ol
-    - User.all.each do |user|
-      %li
-        .user_card.span5
-          .pic_score
-            %img.profile_pic.img-polaroid{:src => user[:image] }
-            .score #{User.get_user_score(user[:id])} pts
+      - User.all.each do |user|
+        %li.span6
+          .user_card
+            .pic_score.span2
+              %img.profile_pic{:src => user[:image] }
+              .score= "#{User.get_user_score(user[:id])}" + " pts" 
+            .name_info.span3
+              %span.user_name= user[:id]
