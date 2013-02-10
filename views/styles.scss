@@ -87,10 +87,15 @@ div.leaderboard {
   div.name_info {
     font-size: 20px;
     line-height: 1em;
-    span.user_name {
-      background-color: $blue;
-      color: white;
-      padding: $large_space;
+    span {
+      &.user_rank {
+        background-color: $blue;
+        color: white;
+        padding: $large_space;
+      }
+      &.user_name {
+        font-weight: $heavy_weight;
+      }
     }
   }
 }
