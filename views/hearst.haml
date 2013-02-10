@@ -4,15 +4,15 @@ Enter a keyword
 %a.btn.btn-primary Search
 
 - @articles["items"].each do |article|
-  .articles
+  .ar
     - if article["author_first_name"] && article["author_last_name"]
       - name = article["author_first_name"] + " " + article["author_last_name"]
       - if Hearst::EDITORS[name]
         %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
-          %p= Hearst::EDITORS[name]
+          %span= Hearst::EDITORS[name]
     %a{:href=> "#{article["canonical_url"]}"}
-      %h2= article["title"]
-      %h4= article["promo_teaser"]
+      %span.title= article["title"]
+      %span.tease= article["promo_teaser"]
 
 
 - @articles["items"].each do |article|  
