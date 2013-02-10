@@ -25,12 +25,10 @@ class TrendProcessor
   end
 
   def process_twitter
-    @trend_hash = Redis::HashKey.new('trends')
-
     tweets = @json_hash["results"]
     tweets.each do |tweet|
-      tweet["entities"]["hashtags"].each do |hastag|
-        @trend_hash.incr(hastag["text"].downcase, 1)
+      tweet["entities"]["hashtags"].each do |hashtag|
+        Trend.add_mention(hashtag["text"].downcase, tweet["created_at"])
       end
     end
   end

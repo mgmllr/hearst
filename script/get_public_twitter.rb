@@ -2,7 +2,6 @@ require 'httparty'
 
 Dir.glob('./lib/*.rb') do |model|
   require model
-  puts model.inspect
 end
 
 TWITTER_API_BASE = "http://search.twitter.com"
