@@ -35,6 +35,6 @@
           .user_card.span5
             .pic_score.span2
               %img.profile_pic{:src => user[:image] }
-              .score #{User.get_user_score(user[:id])} pts
+              .score #{User.get_user_score(user[:name])} pts
             .name_info.span3
               %span.user_name= user[:name]
