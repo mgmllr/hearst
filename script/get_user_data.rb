@@ -35,7 +35,7 @@ users.each do |user|
       keyword_string = keyword_array.join(',')
       timestamp = Time.parse(data["created_at"]).to_i
 
-      Post.add_post(profile.parsed_response["id"], {
+      Post.add_post(profile.parsed_response["handle"], {
         :id => data["id"],
         :name => profile.parsed_response["handle"],
         :post_url => "http://twitter.com/#{data["user"]["screen_name"]}/status/#{data["id"]}",
@@ -58,7 +58,7 @@ users.each do |user|
       keyword_string = data["tags"].join(',')
       caption = data["caption"]["text"] if data["caption"]
 
-      Post.add_post(profile.parsed_response["id"], {
+      Post.add_post(profile.parsed_response["handle"], {
         :id => data["id"],
         :name => profile.parsed_response["handle"],
         :post_url => data["link"],

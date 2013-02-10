@@ -71,6 +71,7 @@ class ExcellentRussianApp < Sinatra::Application
   get "/clear_redis" do
     r = Redis.new
     r.keys.each {|key| r.del key }
+    redirect "/"
   end
 
   def get_user_data

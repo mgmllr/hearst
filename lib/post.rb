@@ -2,8 +2,8 @@ require 'redis/hash_key'
 
 class Post < Model
 
-  def self.add_post(user_id, post_data)
-    post = Redis::HashKey.new("users:#{user_id}:post:#{post_data[:id]}", redis)
+  def self.add_post(username, post_data)
+    post = Redis::HashKey.new("users:#{username}:post:#{post_data[:id]}", redis)
     post.bulk_set(post_data)
   end
 
