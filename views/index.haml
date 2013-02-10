@@ -7,11 +7,11 @@
       %h2  Join the Battle
       .bttns.row-fluid
         - %w[twitter instagram].each do |service| 
-          %a.signin.bttn.span6{:href=>"/auth/singly?service=#{service}"} Connect with "#{service.capitalize}"
-  .row-fluid
-    .hot_stuff.span5
+          %a.signin.bttn.span6{:href=>"/auth/singly?service=#{service}"} Connect with #{service.capitalize}
+  .content.row-fluid
+    .hot_stuff.span12
       .row-fluid
-        .editorial
+        .editorial.span4
           %h3 #Hearst Editorial
           %ol
             - @articles["items"].each do |article|
@@ -24,7 +24,7 @@
                   - if Hearst::EDITORS[name]
                     %a{:href => "http://www.twitter.com/#{Hearst::EDITORS[name]}"}
                       %span.editor= "// " + Hearst::EDITORS[name]
-        .trending
+        .trending.span4
           %h3 #Trending
           %ol  
           - @trends.each do |trend|
@@ -32,27 +32,27 @@
             %li
               .bar{:style=> "width: #{bar_width}px;"}
               .trend= trend[:name]
-    .leaderboard.span6
-      %h3 #Leaderboard
-      - count = 0
-      - @users.each do |user|
-        - count = count + 1
-        - post =  user[:posts][0]
-        .user_card.row-fluid
-          .pic_score.span4
-            %img.profile_pic{:src => user[:image] }
-            .score #{user[:score].round} pts
-          .name_info.span8
-            %span.user_rank= count
-            %span.user_name= "@" + "#{user[:name]}"
-            - if post
-              %a{:href=> "#"}
-                .user_post="#{post[:content]}"
-              .post_details.row-fluid
-                .post_time.span8="#{post[:timestamp].strftime("Posted at %T on %m/%d/%Y")}"
-                .post_score.span4="Score: #{post[:score].round}"
-            - else
-              .user_post.alert No Data Available
+        .leaderboard.span4
+          %h3 #Leaderboard
+          - count = 0
+          - @users.each do |user|
+            - count = count + 1
+            - post =  user[:posts][0]
+            .user_card.row-fluid
+              .pic_score.span3
+                %img.profile_pic{:src => user[:image] }
+                .score #{user[:score].round} pts
+              .name_info.span8
+                %span.user_rank= count
+                %span.user_name= "@" + "#{user[:name]}"
+                - if post
+                  %a{:href=> "#"}
+                    .user_post="#{post[:content]}"
+                  .post_details.row-fluid
+                    .post_time.span9="#{post[:timestamp].strftime("%T on %m/%d")}"
+                    .post_score.span3="+#{post[:score].round}"
+                - else
+                  .user_post.alert No Data Available
 
 #about
   %h1 What?
