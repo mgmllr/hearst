@@ -20,6 +20,7 @@ redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.passwor
 
 users = redis.keys "users:*"
 
+require './lib/model.rb'
 Dir.glob('./lib/*.rb') do |model|
   require model
 end
@@ -32,7 +33,7 @@ users.each do |user|
     statuses.each do |status|
       data = status["data"]
       keyword_array = data["entities"]["hashtags"].map {|ht| ht["text"] }
-      keyword_string = keyword_array.join(',')
+      keyword_string = keyword_array.join(',').downcase
       timestamp = Time.parse(data["created_at"]).to_i
 
       Post.add_post(profile.parsed_response["handle"], {
@@ -55,7 +56,7 @@ users.each do |user|
       amps += data["comments"]["count"] if data["comments"]
       amps += data["likes"]["count"] if data["likes"]
 
-      keyword_string = data["tags"].join(',')
+      keyword_string = data["tags"].join(',').downcase
       caption = data["caption"]["text"] if data["caption"]
 
       Post.add_post(profile.parsed_response["handle"], {

@@ -37,7 +37,7 @@
       .user_card.row-fluid
         .pic_score.span4
           %img.profile_pic{:src => user[:image] }
-          .score #{User.get_user_score(user[:name])} pts
+          .score #{user[:score]} pts
         .name_info.span8
           %span.user_rank= count
           %span.user_name= "@" + "#{user[:name]}"
