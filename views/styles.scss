@@ -17,7 +17,7 @@ h1 {
   text-align: center;
 }
 
-div.trending_editorial {
+div.trending {
   background-color: $yellow;
   padding: $small_pad;
   h3 {
@@ -27,6 +27,9 @@ div.trending_editorial {
   }
   li {
     list-style: none;
+    &.trend{
+      font-weight: 600;
+    }
   }
 }
 
@@ -36,5 +39,21 @@ div.leaderboard {
     color: $blue;
     font-family: "Blanch";
     font-size: 50px;
+  }
+}
+
+div.editorial {
+background-color: $salmon;
+padding: $small_pad;
+  h3 {
+    color: $yellow;
+    font-family: "Blanch";
+    font-size: 50px;
+  }
+  li {
+    list-style: none;
+    &.trend{
+      font-weight: 600;
+    }
   }
 }

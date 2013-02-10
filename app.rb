@@ -54,7 +54,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   get '/' do
-    @trends = Redis::HashKey.new("trends")
+    @trends = Trend.all
     haml :index
   end
 

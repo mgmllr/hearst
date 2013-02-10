@@ -1,10 +1,14 @@
 %h1 - win fashion week -
-.trending_editorial.span5
-  %h3 #Trending Editorial
+.trending.span5
+  %h3 #Trending
   %ol  
-  - @trends.each do |k, v|
+  - @trends.each do |trend|
     %li
-      =k
-      =v
+      %span.trend= trend[:name]
+      %span.count= trend[:total_mentions]
 .leaderboard.span6
   %h3 Leaderboard
+.editorial.span5
+  %h3 Hearst Editorial
+  %ol
+  -
