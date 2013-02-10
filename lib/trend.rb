@@ -1,4 +1,3 @@
-require 'redis/hash_key'
 require 'redis/set'
 
 class Trend
@@ -14,9 +13,10 @@ class Trend
   def self.all
     trends = []
 
-    trend_set = Redis::Set.new("trends:keys")
+    redis = Redis.new
+    trend_set = redis.keys "trends:*:timestamps"
     trend_set.each do |member|
-      timestamps = Redis::Set.new("trends:#{member}:timestamps")
+      timestamps = Redis::Set.new(member)
       timestamps = timestamps.members
       timestamps.map! {|time_str| Time.at(time_str.to_i) }
 

@@ -70,6 +70,9 @@ class ExcellentRussianApp < Sinatra::Application
       @profiles = HTTParty.get(profiles_url, {
         :query => {:access_token => session[:access_token]}
         }).parsed_response
+
+      User.add_user(@profiles, session[:access_token])
+
       @photos = HTTParty.get(photos_url, {
         :query => {:access_token => session[:access_token]}
         }).parsed_response
@@ -108,6 +111,7 @@ class ExcellentRussianApp < Sinatra::Application
 
   get "/auth/singly/callback" do
     auth = request.env["omniauth.auth"]
+    puts auth.inspect
     session[:access_token] = auth.credentials.token
     redirect "/singly"
   end
@@ -118,7 +122,7 @@ class ExcellentRussianApp < Sinatra::Application
   end
 
   def profiles_url
-    "#{SINGLY_API_BASE}/profiles"
+    "#{SINGLY_API_BASE}/profile"
   end
 
   def photos_url

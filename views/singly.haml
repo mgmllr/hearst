@@ -11,7 +11,7 @@
 %ul
 - %w[twitter instagram].each do |service|
   %li="#{service.capitalize}"
-  -if @profiles && @profiles[service]
+  -if @profiles && @profiles["services"][service]
     - @photos.each do |pic|
       %img.img-polaroid{:src=>"#{pic["data"]["images"]["low_resolution"]["url"]}"}
   -else
