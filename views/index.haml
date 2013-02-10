@@ -31,7 +31,7 @@
   .leaderboard.span6
     %h3 #Leaderboard
     %ol
-      - User.all.each do |user|
+      - @users.each do |user|
         %li.span6
           .user_card
             .pic_score.span2

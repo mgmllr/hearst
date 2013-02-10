@@ -13,5 +13,5 @@ end
 
 tweets = HTTParty.get(twitter_url, {:query=> {:include_entities=> true, :q=>"\#HearstFashionHack"}})
 
-tp = TrendProcessor.new(tweets.body, :twitter)
+tp = TrendProcessor.new(tweets.body, :twitter, "hackathon")
 tp.process
