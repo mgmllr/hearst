@@ -18,7 +18,14 @@
             %a.brnd{:href=> "/"} #winNYFW
             %ul.nav
               %li
-                %a.clickit{:href=> "/about"} What?
+                %a{:href=> "/about"} What?
+            .user_session
+              - if current_user[:image]
+                %a.auth.pull-right{:href=> "/logout"}Sign-out  
+                %a.auth.pull-right{:href=> "#"}= "#{current_user[:name]}"
+                %img.pull-right{ :src => current_user[:image] }
+              - else  
+                %span.auth.pull-right{:title => "Select a login option below"} You Should Sign-in
       .container-fluid
         =yield
       #push
