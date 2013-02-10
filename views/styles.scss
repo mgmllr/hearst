@@ -81,6 +81,20 @@ div.editorial {
   }
 }
 
+div.user_card {
+  img.profile_pic {
+    width: 100px;
+  }
+  div.score {
+    background-color: black;
+    color: white;
+    span.label{
+      color: $blue;
+    }
+  }
+}
+
+
 img.nav_prof {
   width: 30px;
   padding: $small_space;
