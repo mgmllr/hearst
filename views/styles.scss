@@ -135,6 +135,10 @@ div.editorial {
   margin-bottom: $small_space;
   padding: $small_space;
   background-color: $salmon;
+  ol {
+    list-style:none;
+    margin: 0 10px;
+  }
   h3 {
     color: $yellow;
     font-family: "Blanch", sans-serif;
@@ -142,6 +146,7 @@ div.editorial {
     line-height: 0.7em;
   }
   li {
+    margin-bottom: 10px;
     a {
       font-weight: $heavy_weight;
       color: white;
